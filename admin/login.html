@@ -178,8 +178,9 @@
             btn.disabled = true;
             btn.textContent = 'Authenticating...';
             await new Promise(r => setTimeout(r, 1200));
-            // Demo auth — in production use Supabase Auth
-            if (email === 'ecell@iimtindia.net' && pass.length >= 6) {
+            // Demo auth — in production use a backend like Supabase Auth
+            // WARNING: Hardcoding passwords in client-side HTML/JS is not secure for production.
+            if (email === 'ecell@iimtindia.net' && pass === 'ecell123') {
                 localStorage.setItem('ecell-admin-auth', JSON.stringify({ email, time: Date.now() }));
                 showToast('Login successful! Redirecting...', 'success');
                 setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
