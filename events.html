@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events — E-Cell IIMTU</title>
+    <meta name="description"
+        content="Upcoming and past events by E-Cell IIMT University — hackathons, workshops, startup pitches, and talks." />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .events-search-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-input-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+            pointer-events: none;
+        }
+
+        .search-input {
+            padding-left: 2.75rem;
+        }
+
+        .event-detail-snippet {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-thumb {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            background: var(--navy-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .gallery-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .reg-form-card {
+            background: var(--surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        @media(max-width:768px) {
+            .event-detail-snippet {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="events.html" class="nav-link active">Events</a>
+                    <a href="startups.html" class="nav-link">Startups</a>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── PAGE HEADER ─── -->
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;" data-aos="fade-up">Events & Programs</div>
+            <h1 class="animate-fadeInUp">Our <span class="gradient-text">Events</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">From hackathons to founder talks — explore all E-Cell experiences
+            </p>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <!-- Search + Filter -->
+            <div class="events-search-bar reveal" data-tabs-parent>
+                <div class="search-input-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="eventSearch" class="form-control search-input"
+                        placeholder="Search events...">
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Upcoming</button>
+                    <button class="tab-btn" data-tab="past">Past Events</button>
+                </div>
+            </div>
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all" data-filter-group="events"
+                    data-target="eventsGrid">All</button>
+                <button class="filter-btn" data-filter="hackathon" data-filter-group="events"
+                    data-target="eventsGrid">🏆 Hackathon</button>
+                <button class="filter-btn" data-filter="workshop" data-filter-group="events" data-target="eventsGrid">💡
+                    Workshop</button>
+                <button class="filter-btn" data-filter="talk" data-filter-group="events" data-target="eventsGrid">🎤
+                    Talk</button>
+                <button class="filter-btn" data-filter="pitch" data-filter-group="events" data-target="eventsGrid">🚀
+                    Startup Pitch</button>
+            </div>
+
+            <!-- UPCOMING TAB -->
+            <div class="tab-content" data-tab="upcoming">
+                <div class="grid-3" id="eventsGrid">
+                    <div class="event-card reveal" data-category="hackathon">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#1a3a5c,#0d1b2a);font-size:4rem;">🏆</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span
+                                    class="badge badge-steel">Hackathon</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Apr 20, 2026</span>
+                                <span class="event-meta-item">📍 IIMT Campus</span>
+                            </div>
+                            <div class="event-card-title">InnoHack 2.0 — 24-Hour Startup Challenge</div>
+                            <div class="event-card-desc">Compete with top student innovators to build solutions for
+                                real-world challenges in 24 hours. Win up to ₹50,000 in prizes!</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='InnoHack 2.0'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="workshop">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#2d1a4a,#0d1b2a);font-size:4rem;">💡</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span
+                                    class="badge badge-gray">Workshop</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 May 5, 2026</span>
+                                <span class="event-meta-item">📍 Seminar Hall A</span>
+                            </div>
+                            <div class="event-card-title">Business Model Canvas Masterclass</div>
+                            <div class="event-card-desc">Learn how to design a winning business model from industry
+                                mentors. Structured sessions + live Q&A.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='BMC Masterclass'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="talk">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#1a4a2d,#0d1b2a);font-size:4rem;">🎤</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span
+                                    class="badge badge-green">Talk</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 May 15, 2026</span>
+                                <span class="event-meta-item">📍 Auditorium</span>
+                            </div>
+                            <div class="event-card-title">Founder's Talk: Zero to One</div>
+                            <div class="event-card-desc">Hear firsthand from successful alumni founders about their
+                                entrepreneurial journey and key lessons learned.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='Founder Talk'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="pitch">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#4a1a1a,#0d1b2a);font-size:4rem;">🚀</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span class="badge badge-orange">Startup
+                                    Pitch</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Jun 1, 2026</span>
+                                <span class="event-meta-item">📍 Innovation Lab</span>
+                            </div>
+                            <div class="event-card-title">E-Cell Pitch Fest 2026</div>
+                            <div class="event-card-desc">Pitch your startup idea to a panel of investors and mentors.
+                                Best 3 teams win incubation support and funding.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='Pitch Fest 2026'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="workshop">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#1a3a4a,#0d1b2a);font-size:4rem;">🧠</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span
+                                    class="badge badge-gray">Workshop</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Jun 12, 2026</span>
+                                <span class="event-meta-item">📍 CS Lab</span>
+                            </div>
+                            <div class="event-card-title">AI & Startup Tech Bootcamp</div>
+                            <div class="event-card-desc">Explore how to leverage AI tools for your startup — from
+                                product development to marketing automation.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='AI Bootcamp'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="hackathon">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#2a4a1a,#0d1b2a);font-size:4rem;">⚡</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-orange">Upcoming</span><span
+                                    class="badge badge-steel">Hackathon</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Jul 5, 2026</span>
+                                <span class="event-meta-item">📍 IIMT Campus</span>
+                            </div>
+                            <div class="event-card-title">Green Tech Hackathon</div>
+                            <div class="event-card-desc">Build sustainable technology solutions for environment and
+                                climate. Open to inter-college teams.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="openModal('registerModal');document.getElementById('regEventName').value='Green Tech Hackathon'">Register
+                                    Now</button>
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="openModal('eventDetailModal')">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAST TAB -->
+            <div class="tab-content hidden" data-tab="past">
+                <div class="grid-3" id="pastGrid">
+                    <div class="event-card reveal" data-category="hackathon">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#1a3a5c,#0d1b2a);font-size:4rem;">🏆</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-gray">Past</span><span
+                                    class="badge badge-steel">Hackathon</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Jan 15, 2026</span>
+                                <span class="event-meta-item">👥 120 Participants</span>
+                            </div>
+                            <div class="event-card-title">InnoHack 1.0 — First Edition</div>
+                            <div class="event-card-desc">The inaugural E-Cell hackathon saw 120 students compete across
+                                24 exciting hours.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-steel btn-sm" onclick="openModal('galleryModal')">📸
+                                    Gallery</button>
+                                <span class="badge badge-green">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="talk">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#1a4a2d,#0d1b2a);font-size:4rem;">🎤</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-gray">Past</span><span class="badge badge-green">Talk</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Feb 10, 2026</span>
+                                <span class="event-meta-item">👥 200 Attendees</span>
+                            </div>
+                            <div class="event-card-title">Entrepreneurship Summit 2026</div>
+                            <div class="event-card-desc">A full-day summit featuring 8 founders and 200+ students from
+                                across Meerut.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-steel btn-sm" onclick="openModal('galleryModal')">📸
+                                    Gallery</button>
+                                <span class="badge badge-green">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card reveal" data-category="workshop">
+                        <div class="event-card-banner"
+                            style="background:linear-gradient(135deg,#2d1a4a,#0d1b2a);font-size:4rem;">💡</div>
+                        <div class="event-card-body">
+                            <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+                                <span class="badge badge-gray">Past</span><span class="badge badge-gray">Workshop</span>
+                            </div>
+                            <div class="event-card-meta">
+                                <span class="event-meta-item">📅 Mar 2, 2026</span>
+                                <span class="event-meta-item">👥 80 Attendees</span>
+                            </div>
+                            <div class="event-card-title">Design Thinking Workshop</div>
+                            <div class="event-card-desc">Students built user-centered solutions using design thinking
+                                methodology with hands-on prototyping.</div>
+                            <div class="event-card-footer">
+                                <button class="btn btn-steel btn-sm" onclick="openModal('galleryModal')">📸
+                                    Gallery</button>
+                                <span class="badge badge-green">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── REGISTRATION MODAL ─── -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>📝 Event Registration</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">Event</label>
+                    <input type="text" id="regEventName" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="name" class="form-control" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Enrollment Number *</label>
+                    <input type="text" name="enrollment" class="form-control" placeholder="e.g. IIMTU2024CS001"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Team Name (if team event)</label>
+                    <input type="text" name="team" class="form-control" placeholder="Optional" />
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Register & Get QR Code ⚡</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ─── EVENT DETAIL MODAL ─── -->
+    <div class="modal-overlay" id="eventDetailModal">
+        <div class="modal" style="max-width:700px;">
+            <div class="modal-header">
+                <h3>🏆 InnoHack 2.0</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+                <span class="badge badge-orange">Upcoming</span>
+                <span class="badge badge-steel">Hackathon</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                    <div style="font-size:1.5rem;margin-bottom:0.25rem;">📅</div>
+                    <div style="font-size:0.75rem;color:var(--gray-400);">Date</div>
+                    <div style="font-weight:600;font-size:0.875rem;">April 20, 2026</div>
+                </div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                    <div style="font-size:1.5rem;margin-bottom:0.25rem;">📍</div>
+                    <div style="font-size:0.75rem;color:var(--gray-400);">Venue</div>
+                    <div style="font-weight:600;font-size:0.875rem;">IIMT Campus</div>
+                </div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                    <div style="font-size:1.5rem;margin-bottom:0.25rem;">🏆</div>
+                    <div style="font-size:0.75rem;color:var(--gray-400);">Prize Pool</div>
+                    <div style="font-weight:600;font-size:0.875rem;">₹50,000</div>
+                </div>
+            </div>
+            <h4 style="margin-bottom:0.75rem;">About the Event</h4>
+            <p style="color:var(--gray-400);font-size:0.9rem;margin-bottom:1.25rem;line-height:1.7;">
+                InnoHack 2.0 is E-Cell IIMTU's flagship 24-hour hackathon where students come together to build
+                innovative solutions for real-world problems. Teams of 2-4 students compete across tracks including
+                EdTech, HealthTech, FinTech, and Sustainability.
+            </p>
+            <h4 style="margin-bottom:0.75rem;">Event Agenda</h4>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;">
+                <div
+                    style="display:flex;gap:1rem;align-items:center;padding:0.75rem;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                    <span style="color:var(--orange);font-size:0.8rem;min-width:60px;">9:00 AM</span>
+                    <span style="font-size:0.875rem;">Inauguration & Problem Statement Release</span>
+                </div>
+                <div
+                    style="display:flex;gap:1rem;align-items:center;padding:0.75rem;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                    <span style="color:var(--orange);font-size:0.8rem;min-width:60px;">10:00 AM</span>
+                    <span style="font-size:0.875rem;">Hacking Begins</span>
+                </div>
+                <div
+                    style="display:flex;gap:1rem;align-items:center;padding:0.75rem;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                    <span style="color:var(--orange);font-size:0.8rem;min-width:60px;">6:00 PM</span>
+                    <span style="font-size:0.875rem;">Mentor Rounds</span>
+                </div>
+                <div
+                    style="display:flex;gap:1rem;align-items:center;padding:0.75rem;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                    <span style="color:var(--orange);font-size:0.8rem;min-width:60px;">10:00 AM+1</span>
+                    <span style="font-size:0.875rem;">Final Presentations & Judging</span>
+                </div>
+            </div>
+            <h4 style="margin-bottom:0.75rem;">Countdown to Event</h4>
+            <div class="countdown" id="eventCountdown" style="margin-bottom:1.5rem;"></div>
+            <button class="btn btn-primary w-full"
+                onclick="closeModal('eventDetailModal');openModal('registerModal');document.getElementById('regEventName').value='InnoHack 2.0'">Register
+                Now ⚡</button>
+        </div>
+    </div>
+
+    <!-- ─── GALLERY MODAL ─── -->
+    <div class="modal-overlay" id="galleryModal">
+        <div class="modal" style="max-width:700px;">
+            <div class="modal-header">
+                <h3>📸 Event Gallery — InnoHack 1.0</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+                <div class="gallery-thumb">🏆</div>
+                <div class="gallery-thumb">💡</div>
+                <div class="gallery-thumb">🎤</div>
+                <div class="gallery-thumb">🤝</div>
+                <div class="gallery-thumb">🚀</div>
+                <div class="gallery-thumb">⚡</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── QR MODAL ─── -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal" style="max-width:400px;">
+            <div class="modal-header">
+                <h3>✅ Registration Confirmed!</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div class="qr-modal-content">
+                <p style="color:var(--gray-400);font-size:0.9rem;margin-bottom:1rem;">Your unique QR code for event
+                    check-in:</p>
+                <div class="qr-canvas" id="qrDisplay">
+                    <canvas id="qrCanvas"></canvas>
+                </div>
+                <p style="font-size:0.75rem;color:var(--gray-400);margin:0.75rem 0;">Show this QR code at the event
+                    entrance</p>
+                <button class="btn btn-primary w-full" onclick="downloadQR()">⬇️ Download QR Code</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+
+    <script src="app.js"></script>
+    <script>
+        // Event countdown
+        initCountdown('2026-04-20T09:00:00', 'eventCountdown');
+
+        // Register form
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = 'Processing...';
+            await new Promise(r => setTimeout(r, 1500));
+            closeModal('registerModal');
+            openModal('qrModal');
+            generateQR('ECELL-IIMTU-' + Date.now(), 'qrCanvas');
+            showToast('Registration successful! 🎉 Check your QR code.', 'success');
+            btn.disabled = false; btn.textContent = 'Register & Get QR Code ⚡';
+            e.target.reset();
+        });
+
+        function downloadQR() {
+            const canvas = document.getElementById('qrCanvas');
+            const link = document.createElement('a');
+            link.download = 'ecell-qr.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            showToast('QR Code downloaded!', 'success');
+        }
+
+        // Event search
+        document.getElementById('eventSearch').addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase();
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentor Bookings — E-Cell Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo"><a href="../index.html" class="navbar-logo"
+                    style="display:inline-flex;"><span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a></div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div><a href="dashboard.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item"><span class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item active"><span class="admin-nav-icon">📅</span>Mentor
+                    Bookings</a>
+                <a href="registrations.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Mentor Bookings</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">Manage 1:1 mentorship session requests
+                        </div>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+            <div class="admin-content">
+                <div class="admin-page-title" style="margin-bottom:2rem;">Mentor Bookings 📅</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon orange">⏳</div>
+                        <div>
+                            <div class="admin-stat-num">5</div>
+                            <div class="admin-stat-label">Pending Requests</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon green">✅</div>
+                        <div>
+                            <div class="admin-stat-num">18</div>
+                            <div class="admin-stat-label">Approved Sessions</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon steel">📅</div>
+                        <div>
+                            <div class="admin-stat-num">3</div>
+                            <div class="admin-stat-label">This Week</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pending requests -->
+                <h3 style="font-size:1rem;margin-bottom:1rem;">⏳ Pending Requests</h3>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;" id="pendingBookings">
+                    <div class="booking-card">
+                        <div class="booking-mentor-avatar">RS</div>
+                        <div style="flex:1;">
+                            <div
+                                style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                                <div style="font-weight:700;">Rohan Sharma</div>
+                                <span class="badge badge-orange">Pending</span>
+                            </div>
+                            <div style="font-size:0.8rem;color:var(--steel-light);margin:0.25rem 0;">Mentor: <strong>Dr.
+                                    Vaibhav Sharma</strong> • Preferred: Apr 5, 2026</div>
+                            <div style="font-size:0.875rem;color:var(--gray-400);margin-bottom:0.75rem;">I have an
+                                EdTech startup idea and need guidance on the product roadmap and market validation
+                                strategy.</div>
+                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                                <button class="btn btn-primary btn-sm" onclick="approveBooking(this,'Rohan Sharma')">✓
+                                    Approve & Send Invite</button>
+                                <button class="btn btn-secondary btn-sm" onclick="openModal('bookingNoteModal')">📝 Add
+                                    Note</button>
+                                <button class="btn btn-sm"
+                                    style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--danger);"
+                                    onclick="rejectBooking(this)">✕ Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-card">
+                        <div class="booking-mentor-avatar">PK</div>
+                        <div style="flex:1;">
+                            <div
+                                style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                                <div style="font-weight:700;">Priya Kapoor</div>
+                                <span class="badge badge-orange">Pending</span>
+                            </div>
+                            <div style="font-size:0.8rem;color:var(--steel-light);margin:0.25rem 0;">Mentor:
+                                <strong>Zeba Tyagi</strong> • Preferred: Apr 6, 2026</div>
+                            <div style="font-size:0.875rem;color:var(--gray-400);margin-bottom:0.75rem;">I want to pitch
+                                FarmWallet at an investor event next month. Need help with improving my pitch deck and
+                                presentation skills.</div>
+                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                                <button class="btn btn-primary btn-sm" onclick="approveBooking(this,'Priya Kapoor')">✓
+                                    Approve & Send Invite</button>
+                                <button class="btn btn-secondary btn-sm" onclick="openModal('bookingNoteModal')">📝 Add
+                                    Note</button>
+                                <button class="btn btn-sm"
+                                    style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--danger);"
+                                    onclick="rejectBooking(this)">✕ Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-card">
+                        <div class="booking-mentor-avatar">AG</div>
+                        <div style="flex:1;">
+                            <div
+                                style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                                <div style="font-weight:700;">Aryan Gupta</div>
+                                <span class="badge badge-orange">Pending</span>
+                            </div>
+                            <div style="font-size:0.8rem;color:var(--steel-light);margin:0.25rem 0;">Mentor: <strong>Dr.
+                                    Akshay Raj</strong> • Preferred: Apr 8, 2026</div>
+                            <div style="font-size:0.875rem;color:var(--gray-400);margin-bottom:0.75rem;">HealthCircle
+                                needs a legal structure. Looking for advice on company registration, IP protection, and
+                                startup legal basics.</div>
+                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                                <button class="btn btn-primary btn-sm" onclick="approveBooking(this,'Aryan Gupta')">✓
+                                    Approve & Send Invite</button>
+                                <button class="btn btn-secondary btn-sm" onclick="openModal('bookingNoteModal')">📝 Add
+                                    Note</button>
+                                <button class="btn btn-sm"
+                                    style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--danger);"
+                                    onclick="rejectBooking(this)">✕ Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Approved sessions -->
+                <h3 style="font-size:1rem;margin-bottom:1rem;">✅ Approved Sessions</h3>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Mentor</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sneha Rao</td>
+                                <td>Vaibhav Singh</td>
+                                <td>Apr 2, 2026</td>
+                                <td><span class="badge badge-green">Completed</span></td>
+                                <td><button class="table-action-btn">View Notes</button></td>
+                            </tr>
+                            <tr>
+                                <td>Vaibhav M.</td>
+                                <td>Zoya Naaz</td>
+                                <td>Apr 3, 2026</td>
+                                <td><span class="badge badge-steel">Scheduled</span></td>
+                                <td><button class="table-action-btn">View Notes</button></td>
+                            </tr>
+                            <tr>
+                                <td>Ananya J.</td>
+                                <td>Abhishek Khandelwal</td>
+                                <td>Apr 4, 2026</td>
+                                <td><span class="badge badge-steel">Scheduled</span></td>
+                                <td><button class="table-action-btn">View Notes</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Note Modal -->
+    <div class="modal-overlay" id="bookingNoteModal">
+        <div class="modal" style="max-width:400px;">
+            <div class="modal-header">
+                <h3>📝 Add Note</h3><button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div class="form-group"><label class="form-label">Note for student</label><textarea class="form-control"
+                    rows="4" placeholder="E.g. Please bring your pitch deck to the meeting..."></textarea></div>
+            <button class="btn btn-primary w-full"
+                onclick="showToast('Note saved!','success');closeModal('bookingNoteModal')">Save Note</button>
+        </div>
+    </div>
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); localStorage.removeItem('ecell-admin-auth'); window.location.href = 'login.html'; });
+        document.getElementById('adminMenuToggle').addEventListener('click', () => document.getElementById('adminSidebar').classList.toggle('open'));
+        async function approveBooking(btn, name) {
+            btn.disabled = true; btn.textContent = 'Sending invite...';
+            await new Promise(r => setTimeout(r, 1200));
+            btn.closest('.booking-card').remove();
+            showToast(`Booking approved! Calendar invite sent to ${name}. 📅`, 'success');
+        }
+        function rejectBooking(btn) {
+            if (confirm('Decline this booking request?')) { btn.closest('.booking-card').remove(); showToast('Booking declined', 'info'); }
+        }
+    </script>
+</body>
+
+</html>

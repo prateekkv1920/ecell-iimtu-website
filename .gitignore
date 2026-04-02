@@ -1,0 +1,7 @@
+# Admin credentials are demo-only
+# No sensitive data in this repo
+*.env
+.env.*
+node_modules/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Editor — E-Cell Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        .blog-editor {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            min-height: 300px;
+        }
+
+        .blog-toolbar {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .blog-tool-btn {
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+            background: var(--surface-hover);
+            color: var(--gray-200);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .blog-tool-btn:hover {
+            background: var(--steel);
+            color: #fff;
+            border-color: var(--steel);
+        }
+
+        .blog-editor-body {
+            padding: 1.25rem;
+            min-height: 280px;
+            outline: none;
+            font-size: 0.9rem;
+            color: var(--white);
+            line-height: 1.8;
+        }
+
+        .blog-editor-body:empty::before {
+            content: 'Start writing your blog post...';
+            color: var(--gray-400);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo"><a href="../index.html" class="navbar-logo"
+                    style="display:inline-flex;"><span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a></div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div>
+                <a href="dashboard.html" class="admin-nav-item"><span class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item active"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item"><span class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item"><span class="admin-nav-icon">📅</span>Mentor Bookings</a>
+                <a href="registrations.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Blog Editor</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">Create and manage blog posts</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="btn btn-primary btn-sm" onclick="showCompose()">✍️ New Post</button>
+                </div>
+            </div>
+            <div class="admin-content">
+                <div class="admin-page-title" style="margin-bottom:2rem;">Blog Posts 📝</div>
+                <!-- Posts table -->
+                <div id="postsView">
+                    <div style="display:flex;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center;">
+                        <input type="text" id="blogSearch" class="form-control" placeholder="Search posts..."
+                            style="max-width:280px;" />
+                    </div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="blogTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Author</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>How InnoHack 1.0 Launched 3 Startups</strong></td>
+                                    <td><span class="badge badge-orange">Insight</span></td>
+                                    <td>Vansh Aneja</td>
+                                    <td>Mar 15</td>
+                                    <td><span class="badge badge-green">Published</span></td>
+                                    <td>
+                                        <div class="table-actions"><button class="table-action-btn primary"
+                                                onclick="editPost()">Edit</button><button class="table-action-btn"
+                                                onclick="toggleBlogStatus(this)">Unpublish</button><button
+                                                class="table-action-btn danger">Delete</button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5 Lessons from IIMT's First Founder</strong></td>
+                                    <td><span class="badge badge-steel">Founders</span></td>
+                                    <td>Prateek</td>
+                                    <td>Apr 1</td>
+                                    <td><span class="badge badge-green">Published</span></td>
+                                    <td>
+                                        <div class="table-actions"><button class="table-action-btn primary"
+                                                onclick="editPost()">Edit</button><button class="table-action-btn"
+                                                onclick="toggleBlogStatus(this)">Unpublish</button><button
+                                                class="table-action-btn danger">Delete</button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10 Free Tools for Student Startups</strong></td>
+                                    <td><span class="badge badge-gray">Tips</span></td>
+                                    <td>Vansh Aneja</td>
+                                    <td>Mar 20</td>
+                                    <td><span class="badge badge-green">Published</span></td>
+                                    <td>
+                                        <div class="table-actions"><button class="table-action-btn primary"
+                                                onclick="editPost()">Edit</button><button class="table-action-btn"
+                                                onclick="toggleBlogStatus(this)">Unpublish</button><button
+                                                class="table-action-btn danger">Delete</button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Green Tech: The Next Big Wave</strong></td>
+                                    <td><span class="badge badge-orange">Insight</span></td>
+                                    <td>Prateek</td>
+                                    <td>Mar 28</td>
+                                    <td><span class="badge badge-gray">Draft</span></td>
+                                    <td>
+                                        <div class="table-actions"><button class="table-action-btn primary"
+                                                onclick="editPost()">Edit</button><button class="table-action-btn"
+                                                onclick="toggleBlogStatus(this)">Publish</button><button
+                                                class="table-action-btn danger">Delete</button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Compose view -->
+                <div id="composeView" style="display:none;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+                        <h3 style="font-size:1rem;">✍️ New Blog Post</h3>
+                        <button class="btn btn-secondary btn-sm" onclick="hideCompose()">← Back to Posts</button>
+                    </div>
+                    <div class="grid-2" style="align-items:start;gap:2rem;">
+                        <div>
+                            <div class="form-group"><label class="form-label">Post Title *</label><input type="text"
+                                    id="postTitle" class="form-control" placeholder="Post title..." /></div>
+                            <div class="form-group"><label class="form-label">Slug *</label><input type="text"
+                                    id="postSlug" class="form-control" placeholder="post-slug" /></div>
+                            <div class="form-group">
+                                <label class="form-label">Content *</label>
+                                <div class="blog-editor">
+                                    <div class="blog-toolbar">
+                                        <button class="blog-tool-btn"
+                                            onclick="bExecCmd('bold')"><strong>B</strong></button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('italic')"><em>I</em></button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('underline')"><u>U</u></button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('formatBlock','h2')">H2</button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('formatBlock','h3')">H3</button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('insertUnorderedList')">•
+                                            List</button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('insertOrderedList')">1.
+                                            List</button>
+                                        <button class="blog-tool-btn" onclick="bInsertLink()">🔗 Link</button>
+                                        <button class="blog-tool-btn" onclick="bExecCmd('removeFormat')">Clear</button>
+                                    </div>
+                                    <div class="blog-editor-body" id="blogEditorBody" contenteditable="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group"><label class="form-label">Cover Image</label><input type="file"
+                                    class="form-control" accept="image/*" /></div>
+                            <div class="form-group"><label class="form-label">Category *</label>
+                                <select class="form-control">
+                                    <option>Startup Insight</option>
+                                    <option>Event Recap</option>
+                                    <option>Founder Story</option>
+                                    <option>Tips & Resources</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label class="form-label">Author *</label><input type="text"
+                                    class="form-control" value="Vansh Aneja" /></div>
+                            <div class="form-group"><label class="form-label">Meta Description</label><textarea
+                                    class="form-control" rows="3"
+                                    placeholder="SEO description (150-160 chars)"></textarea></div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+                                <label
+                                    style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.875rem;"><input
+                                        type="checkbox" style="accent-color:var(--orange);" /> Publish
+                                    immediately</label>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                                <button class="btn btn-primary w-full" onclick="publishPost()">📢 Publish Post</button>
+                                <button class="btn btn-secondary w-full" onclick="saveDraft()">💾 Save as Draft</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); localStorage.removeItem('ecell-admin-auth'); window.location.href = 'login.html'; });
+        document.getElementById('adminMenuToggle').addEventListener('click', () => document.getElementById('adminSidebar').classList.toggle('open'));
+        initTableSearch('blogSearch', 'blogTable');
+        function showCompose() { document.getElementById('postsView').style.display = 'none'; document.getElementById('composeView').style.display = 'block'; }
+        function hideCompose() { document.getElementById('postsView').style.display = 'block'; document.getElementById('composeView').style.display = 'none'; }
+        function editPost() { showCompose(); document.getElementById('postTitle').value = '5 Lessons from IIMT\'s First Founder'; document.getElementById('postSlug').value = '5-lessons-first-founder'; document.getElementById('blogEditorBody').innerHTML = '<p>Start editing...</p>'; }
+        function bExecCmd(cmd, val) { document.getElementById('blogEditorBody').focus(); document.execCommand(cmd, false, val || null); }
+        function bInsertLink() { const url = prompt('URL:'); if (url) document.execCommand('createLink', false, url); }
+        async function publishPost() {
+            const title = document.getElementById('postTitle').value;
+            if (!title) { showToast('Please add a title', 'error'); return; }
+            await new Promise(r => setTimeout(r, 1000));
+            showToast(`"${title}" published! 🎉`, 'success');
+            hideCompose();
+        }
+        async function saveDraft() {
+            await new Promise(r => setTimeout(r, 600));
+            showToast('Draft saved!', 'info');
+        }
+        function toggleBlogStatus(btn) {
+            const row = btn.closest('tr');
+            const badge = row.querySelector('.badge:last-of-type');
+            if (!badge) return;
+            if (badge.classList.contains('badge-green')) {
+                badge.className = 'badge badge-gray'; badge.textContent = 'Draft'; btn.textContent = 'Publish';
+            } else { badge.className = 'badge badge-green'; badge.textContent = 'Published'; btn.textContent = 'Unpublish'; }
+            showToast('Post status updated!', 'success');
+        }
+        // Auto slug from title
+        document.getElementById('postTitle')?.addEventListener('input', (e) => {
+            document.getElementById('postSlug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        });
+    </script>
+</body>
+
+</html>

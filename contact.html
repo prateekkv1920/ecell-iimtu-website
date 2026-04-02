@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact / Join E-Cell — IIMTU</title>
+    <meta name="description" content="Apply to join E-Cell IIMT University or get in touch with us." />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            transition: all var(--transition);
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--border-strong);
+            background: var(--surface-hover);
+        }
+
+        .contact-info-icon {
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(74, 123, 157, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-q {
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition);
+        }
+
+        .faq-q:hover {
+            background: var(--surface-hover);
+        }
+
+        .faq-a {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        .faq-a.open {
+            max-height: 200px;
+            padding: 0.75rem 1.25rem 1rem;
+        }
+
+        .faq-arrow {
+            transition: transform var(--transition);
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        @media(max-width:768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a><a href="events.html" class="nav-link">Events</a>
+                    <a href="startups.html" class="nav-link">Startups</a><a href="team.html" class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a><a href="contact.html"
+                        class="nav-link active">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;">🚀 Join Us</div>
+            <h1 class="animate-fadeInUp">Get in <span class="gradient-text">Touch</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">Apply to join E-Cell IIMTU or reach out with any questions</p>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="contact-grid reveal">
+                <!-- Left: Info + FAQs -->
+                <div>
+                    <h3 style="margin-bottom:1.5rem;">Contact <span class="gradient-text">Information</span></h3>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">✉</div>
+                        <div>
+                            <div style="font-weight:600;margin-bottom:0.25rem;">Email Us</div>
+                            <a href="mailto:ecell@iimtindia.net"
+                                style="color:var(--steel-light);font-size:0.875rem;">ecell@iimtindia.net</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">📞</div>
+                        <div>
+                            <div style="font-weight:600;margin-bottom:0.25rem;">Call Us</div>
+                            <a href="tel:+916395849822" style="color:var(--steel-light);font-size:0.875rem;">+91 63958
+                                49822</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">📍</div>
+                        <div>
+                            <div style="font-weight:600;margin-bottom:0.25rem;">Visit Us</div>
+                            <p style="color:var(--gray-400);font-size:0.875rem;">IIMT University, O Pocket, Ganga Nagar,
+                                Meerut, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">📸</div>
+                        <div>
+                            <div style="font-weight:600;margin-bottom:0.25rem;">Follow Us</div>
+                            <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+                                <a href="https://www.instagram.com/ecelliimtu/" target="_blank"
+                                    class="btn btn-secondary btn-sm">Instagram</a>
+                                <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                                    class="btn btn-secondary btn-sm">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <h4 style="margin-bottom:1rem;">Frequently Asked Questions</h4>
+                    <div>
+                        <div class="faq-item">
+                            <div class="faq-q" onclick="toggleFaq(this)">Who can join E-Cell IIMTU? <span
+                                    class="faq-arrow">▼</span></div>
+                            <div class="faq-a">Any student currently enrolled at IIMT University can apply to join
+                                E-Cell. We welcome students from all branches and years.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q" onclick="toggleFaq(this)">Do I need a startup idea to join? <span
+                                    class="faq-arrow">▼</span></div>
+                            <div class="faq-a">Not at all! You just need the passion to learn. E-Cell is for everyone —
+                                whether you want to start a company someday or just learn about entrepreneurship.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q" onclick="toggleFaq(this)">Is there a membership fee? <span
+                                    class="faq-arrow">▼</span></div>
+                            <div class="faq-a">E-Cell IIMTU is free to join. Some events may have nominal registration
+                                fees to cover logistics, but membership itself is completely free.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q" onclick="toggleFaq(this)">What will I gain from joining? <span
+                                    class="faq-arrow">▼</span></div>
+                            <div class="faq-a">You gain access to workshops, hackathons, mentorship sessions, networking
+                                events, and a like-minded community of student entrepreneurs. Plus certificates and
+                                prizes!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Join Form -->
+                <div
+                    style="background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-xl);padding:2.5rem;">
+                    <div class="section-label" style="margin-bottom:1rem;">Application</div>
+                    <h3 style="margin-bottom:0.5rem;">Join <span class="gradient-text">E-Cell IIMTU</span></h3>
+                    <p style="color:var(--gray-400);font-size:0.875rem;margin-bottom:1.75rem;">Fill in the form below
+                        and we'll reach out within 3 working days.</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" name="name" class="form-control" placeholder="Your full name" required />
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" name="email" class="form-control" placeholder="your@email.com"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Enrollment Number *</label>
+                            <input type="text" name="enrollment" class="form-control" placeholder="e.g. IIMTU2024CS001"
+                                required />
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Branch</label>
+                                <select name="branch" class="form-control">
+                                    <option value="">Select branch</option>
+                                    <option>Computer Science</option>
+                                    <option>IT</option>
+                                    <option>Electronics</option>
+                                    <option>Mechanical</option>
+                                    <option>Civil</option>
+                                    <option>MBA</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Year</label>
+                                <select name="year" class="form-control">
+                                    <option value="">Select year</option>
+                                    <option>1st Year</option>
+                                    <option>2nd Year</option>
+                                    <option>3rd Year</option>
+                                    <option>4th Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Area of Interest</label>
+                            <select name="interest" class="form-control">
+                                <option>Marketing & Events</option>
+                                <option>Tech & Product</option>
+                                <option>Finance & Operations</option>
+                                <option>Design & Content</option>
+                                <option>Business Development</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Why do you want to join E-Cell? *</label>
+                            <textarea name="reason" class="form-control" rows="4"
+                                placeholder="Tell us about your passion for entrepreneurship, any startup ideas you have, or what you hope to gain from E-Cell..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full btn-lg">Submit Application ⚡</button>
+                        <p style="text-align:center;font-size:0.75rem;color:var(--gray-600);margin-top:0.75rem;">We
+                            review all applications and respond within 3 working days.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <span>© 2026 E-Cell IIMT University</span>
+                <div style="display:flex;gap:1rem;">
+                    <a href="https://www.instagram.com/ecelliimtu/" target="_blank" class="footer-link">Instagram</a>
+                    <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                        class="footer-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="toast-container"></div>
+    <script src="app.js"></script>
+    <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const answer = item.querySelector('.faq-a');
+            item.classList.toggle('open');
+            answer.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

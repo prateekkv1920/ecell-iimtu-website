@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — E-Cell IIMTU</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo">
+                <a href="../index.html" class="navbar-logo" style="display:inline-flex;">
+                    <span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div>
+                <a href="dashboard.html" class="admin-nav-item active"><span
+                        class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item"><span class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item"><span class="admin-nav-icon">📅</span>Mentor Bookings</a>
+                <a href="registrations.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+
+        <!-- ─── MAIN ─── -->
+        <main class="admin-main">
+            <!-- Topbar -->
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;display:none;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Welcome back, Admin 👋</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">E-Cell IIMTU Control Panel</div>
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <span style="font-size:0.8rem;color:var(--gray-400);" id="currentTime"></span>
+                    <button class="theme-toggle" id="themeToggle" style="font-size:0.875rem;">🌙</button>
+                    <div
+                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--steel),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.875rem;">
+                        A</div>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <!-- Page title -->
+                <div style="margin-bottom:2rem;">
+                    <div class="admin-page-title">Dashboard 📊</div>
+                    <div class="admin-page-subtitle">Overview of E-Cell IIMTU activity</div>
+                </div>
+
+                <!-- Stats -->
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon orange">📧</div>
+                        <div>
+                            <div class="admin-stat-num counter" data-count="312">0</div>
+                            <div class="admin-stat-label">Newsletter Subscribers</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon steel">🗓️</div>
+                        <div>
+                            <div class="admin-stat-num counter" data-count="6">0</div>
+                            <div class="admin-stat-label">Upcoming Events</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon green">🎟️</div>
+                        <div>
+                            <div class="admin-stat-num counter" data-count="248">0</div>
+                            <div class="admin-stat-label">Total Registrations</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon purple">📝</div>
+                        <div>
+                            <div class="admin-stat-num counter" data-count="6">0</div>
+                            <div class="admin-stat-label">Published Posts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <h3 style="margin-bottom:1rem;font-size:1.1rem;">Quick Actions</h3>
+                <div class="grid-4" style="margin-bottom:2rem;">
+                    <a href="events.html"
+                        style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;text-align:center;transition:all var(--transition);display:block;text-decoration:none;"
+                        onmouseover="this.style.borderColor='var(--border-strong)';this.style.transform='translateY(-3px)'"
+                        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">➕</div>
+                        <div style="font-weight:600;font-size:0.875rem;color:var(--white);">New Event</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);margin-top:0.25rem;">Create event</div>
+                    </a>
+                    <a href="newsletter.html"
+                        style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;text-align:center;transition:all var(--transition);display:block;"
+                        onmouseover="this.style.borderColor='var(--border-strong)';this.style.transform='translateY(-3px)'"
+                        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">📧</div>
+                        <div style="font-weight:600;font-size:0.875rem;color:var(--white);">Send Newsletter</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);margin-top:0.25rem;">Compose & send</div>
+                    </a>
+                    <a href="blog.html"
+                        style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;text-align:center;transition:all var(--transition);display:block;"
+                        onmouseover="this.style.borderColor='var(--border-strong)';this.style.transform='translateY(-3px)'"
+                        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">✍️</div>
+                        <div style="font-weight:600;font-size:0.875rem;color:var(--white);">New Blog Post</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);margin-top:0.25rem;">Write & publish</div>
+                    </a>
+                    <a href="team.html"
+                        style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;text-align:center;transition:all var(--transition);display:block;"
+                        onmouseover="this.style.borderColor='var(--border-strong)';this.style.transform='translateY(-3px)'"
+                        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">👥</div>
+                        <div style="font-weight:600;font-size:0.875rem;color:var(--white);">Manage Team</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);margin-top:0.25rem;">Add / edit members
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Two column: Recent Registrations + Pending -->
+                <div class="grid-2" style="margin-bottom:2rem;">
+                    <!-- Recent Registrations -->
+                    <div>
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                            <h3 style="font-size:1rem;">Recent Registrations</h3>
+                            <a href="registrations.html" style="font-size:0.8rem;color:var(--steel-light);">View all
+                                →</a>
+                        </div>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Event</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rohan Sharma</td>
+                                        <td>InnoHack 2.0</td>
+                                        <td>Apr 1</td>
+                                        <td><span class="badge badge-green">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Priya Singh</td>
+                                        <td>BMC Workshop</td>
+                                        <td>Apr 1</td>
+                                        <td><span class="badge badge-green">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aryan Gupta</td>
+                                        <td>InnoHack 2.0</td>
+                                        <td>Mar 31</td>
+                                        <td><span class="badge badge-green">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sneha Rao</td>
+                                        <td>Founder's Talk</td>
+                                        <td>Mar 30</td>
+                                        <td><span class="badge badge-green">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaibhav M.</td>
+                                        <td>InnoHack 2.0</td>
+                                        <td>Mar 29</td>
+                                        <td><span class="badge badge-steel">Pending QR</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Pending Actions -->
+                    <div>
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                            <h3 style="font-size:1rem;">Pending Actions</h3>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                            <div
+                                style="background:var(--surface);border:1px solid rgba(255,107,53,0.3);border-radius:var(--radius-md);padding:1rem;display:flex;align-items:center;gap:1rem;">
+                                <span style="font-size:1.5rem;">💡</span>
+                                <div style="flex:1;">
+                                    <div style="font-weight:600;font-size:0.875rem;">3 Startup Ideas to Review</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Submitted by students</div>
+                                </div>
+                                <a href="startups.html" class="btn btn-primary btn-sm">Review</a>
+                            </div>
+                            <div
+                                style="background:var(--surface);border:1px solid rgba(74,123,157,0.3);border-radius:var(--radius-md);padding:1rem;display:flex;align-items:center;gap:1rem;">
+                                <span style="font-size:1.5rem;">📅</span>
+                                <div style="flex:1;">
+                                    <div style="font-weight:600;font-size:0.875rem;">5 Mentor Booking Requests</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Awaiting approval</div>
+                                </div>
+                                <a href="bookings.html" class="btn btn-steel btn-sm">View</a>
+                            </div>
+                            <div
+                                style="background:var(--surface);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius-md);padding:1rem;display:flex;align-items:center;gap:1rem;">
+                                <span style="font-size:1.5rem;">🎟️</span>
+                                <div style="flex:1;">
+                                    <div style="font-weight:600;font-size:0.875rem;">InnoHack 2.0: 87 Registrations
+                                    </div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Capacity: 120 teams</div>
+                                </div>
+                                <a href="registrations.html" class="btn btn-secondary btn-sm">Details</a>
+                            </div>
+                            <div
+                                style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1rem;display:flex;align-items:center;gap:1rem;">
+                                <span style="font-size:1.5rem;">📧</span>
+                                <div style="flex:1;">
+                                    <div style="font-weight:600;font-size:0.875rem;">Newsletter: 312 Subscribers</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Last sent: April 1, 2026</div>
+                                </div>
+                                <a href="newsletter.html" class="btn btn-secondary btn-sm">Compose</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics placeholder -->
+                <div>
+                    <h3 style="font-size:1rem;margin-bottom:1rem;">Site Analytics <span class="badge badge-gray"
+                            style="font-size:0.65rem;vertical-align:middle;">Connect Umami / Plausible</span></h3>
+                    <div
+                        style="background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius-md);padding:3rem;text-align:center;">
+                        <div style="font-size:3rem;margin-bottom:1rem;">📈</div>
+                        <div style="font-weight:600;margin-bottom:0.5rem;">Analytics Dashboard</div>
+                        <p style="color:var(--gray-400);font-size:0.875rem;max-width:400px;margin:0 auto 1.5rem;">
+                            Connect your Umami or Plausible instance to see page views, registrations, and top events
+                            visited.</p>
+                        <a href="https://umami.is" target="_blank" class="btn btn-steel btn-sm">Setup Umami Analytics
+                            →</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        // Auth guard
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth || (Date.now() - auth.time) >= 24 * 60 * 60 * 1000) {
+            window.location.href = 'login.html';
+        }
+        // Clock
+        function updateClock() {
+            const el = document.getElementById('currentTime');
+            if (el) el.textContent = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+        }
+        setInterval(updateClock, 1000); updateClock();
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('ecell-admin-auth');
+            window.location.href = 'login.html';
+        });
+        // Mobile sidebar toggle
+        const menuToggle = document.getElementById('adminMenuToggle');
+        if (menuToggle) {
+            menuToggle.style.display = 'block';
+            menuToggle.addEventListener('click', () => {
+                document.getElementById('adminSidebar').classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+
+</html>

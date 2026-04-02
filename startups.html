@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startups — E-Cell IIMTU</title>
+    <meta name="description"
+        content="Startups supported by E-Cell IIMT University. Submit your ideas and explore our ecosystem." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a><a href="events.html" class="nav-link">Events</a>
+                    <a href="startups.html" class="nav-link active">Startups</a><a href="team.html"
+                        class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;">Innovation Ecosystem</div>
+            <h1 class="animate-fadeInUp">Startup <span class="gradient-text">Showcase</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">Real startups. Real founders. Built right here at IIMT University.
+            </p>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all" data-filter-group="startups"
+                    data-target="startupsGrid">All Domains</button>
+                <button class="filter-btn" data-filter="edtech" data-filter-group="startups"
+                    data-target="startupsGrid">🎓 EdTech</button>
+                <button class="filter-btn" data-filter="fintech" data-filter-group="startups"
+                    data-target="startupsGrid">💰 FinTech</button>
+                <button class="filter-btn" data-filter="healthtech" data-filter-group="startups"
+                    data-target="startupsGrid">🏥 HealthTech</button>
+                <button class="filter-btn" data-filter="sustaintech" data-filter-group="startups"
+                    data-target="startupsGrid">♻️ SustainTech</button>
+                <button class="filter-btn" data-filter="saas" data-filter-group="startups" data-target="startupsGrid">💻
+                    SaaS</button>
+            </div>
+            <div class="grid-3" id="startupsGrid">
+                <div class="startup-card reveal" data-category="edtech">
+                    <div class="startup-logo">EL</div>
+                    <div class="startup-name">EduLeap</div>
+                    <div class="startup-founder">by Rahul Sharma • EdTech</div>
+                    <div class="startup-liner">AI-powered adaptive learning platform for tier-2 college students in
+                        India.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="edulearn">▲ <span class="vote-count">42</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+                <div class="startup-card reveal" data-category="fintech">
+                    <div class="startup-logo">FW</div>
+                    <div class="startup-name">FarmWallet</div>
+                    <div class="startup-founder">by Priya Singh • FinTech</div>
+                    <div class="startup-liner">Digital micro-lending for small farmers and rural entrepreneurs across UP
+                        and Bihar.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="farmwallet">▲ <span class="vote-count">38</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+                <div class="startup-card reveal" data-category="healthtech">
+                    <div class="startup-logo">HC</div>
+                    <div class="startup-name">HealthCircle</div>
+                    <div class="startup-founder">by Aryan Gupta • HealthTech</div>
+                    <div class="startup-liner">Connecting rural patients to specialist doctors via telemedicine and
+                        local health workers.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="healthcircle">▲ <span class="vote-count">31</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+                <div class="startup-card reveal" data-category="sustaintech">
+                    <div class="startup-logo">GE</div>
+                    <div class="startup-name">GreenEdge</div>
+                    <div class="startup-founder">by Sneha Rao • SustainTech</div>
+                    <div class="startup-liner">Waste-to-energy conversion kits for college campuses and residential
+                        societies.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="greenedge">▲ <span class="vote-count">29</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+                <div class="startup-card reveal" data-category="saas">
+                    <div class="startup-logo" style="background:linear-gradient(135deg,#4a1a6a,#0d1b2a);">NG</div>
+                    <div class="startup-name">NextGen ERP</div>
+                    <div class="startup-founder">by Vaibhav Mehta • SaaS</div>
+                    <div class="startup-liner">Lightweight ERP solution designed specifically for Indian SMEs with zero
+                        learning curve.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="nextgenerp">▲ <span class="vote-count">24</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+                <div class="startup-card reveal" data-category="edtech">
+                    <div class="startup-logo" style="background:linear-gradient(135deg,#1a4a3a,#0d1b2a);">SK</div>
+                    <div class="startup-name">SkillKraft</div>
+                    <div class="startup-founder">by Ananya Joshi • EdTech</div>
+                    <div class="startup-liner">Gamified skill development app bridging the employability gap for
+                        engineering graduates.</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;">
+                        <button class="vote-btn" data-id="skillkraft">▲ <span class="vote-count">19</span>
+                            Upvotes</button>
+                        <button class="btn btn-secondary btn-sm" onclick="openModal('startupDetailModal')">View
+                            →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── STARTUP IDEAS SUBMISSION ─── -->
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="idea-submit-section reveal">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+                    <div>
+                        <div class="section-label">💡 Got an Idea?</div>
+                        <h2 style="margin-bottom:1rem;">Submit Your <span class="gradient-text">Startup Idea</span></h2>
+                        <p style="color:var(--gray-400);margin-bottom:1.5rem;line-height:1.7;">
+                            Have a great idea? Submit it here. The E-Cell team reviews all submissions — the best ideas
+                            get featured on our Startups page and may receive mentorship support.
+                        </p>
+                        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+                                <span style="font-size:1.25rem;">✅</span>
+                                <span style="color:var(--gray-400);">All ideas reviewed by mentors within 7 days</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+                                <span style="font-size:1.25rem;">✅</span>
+                                <span style="color:var(--gray-400);">Top ideas featured on the public Startup
+                                    Showcase</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+                                <span style="font-size:1.25rem;">✅</span>
+                                <span style="color:var(--gray-400);">Community voting to discover best ideas</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+                                <span style="font-size:1.25rem;">✅</span>
+                                <span style="color:var(--gray-400);">Best ideas get mentorship & incubation
+                                    support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="ideaForm"
+                            style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
+                            <div class="form-group">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" placeholder="Full name" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-control" placeholder="your@email.com" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Startup Name *</label>
+                                <input type="text" class="form-control" placeholder="Your startup name" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Domain</label>
+                                <select class="form-control">
+                                    <option>Select domain</option>
+                                    <option>EdTech</option>
+                                    <option>FinTech</option>
+                                    <option>HealthTech</option>
+                                    <option>SustainTech</option>
+                                    <option>SaaS</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Idea Description *</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Describe your startup idea in 2-3 sentences..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full">Submit Idea 🚀</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── STARTUP DETAIL MODAL ─── -->
+    <div class="modal-overlay" id="startupDetailModal">
+        <div class="modal" style="max-width:600px;">
+            <div class="modal-header">
+                <h3>🚀 EduLeap</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+                <span class="badge badge-steel">EdTech</span>
+                <span class="badge badge-green">Featured</span>
+            </div>
+            <p style="color:var(--gray-400);margin-bottom:1.5rem;line-height:1.7;">
+                EduLeap is an AI-powered adaptive learning platform specifically designed for tier-2 college students in
+                India. It personalizes the learning experience based on each student's pace, strengths, and goals —
+                making quality education accessible to everyone, everywhere.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;">
+                    <div style="font-size:0.75rem;color:var(--gray-400);margin-bottom:0.25rem;">Founder</div>
+                    <div style="font-weight:600;">Rahul Sharma</div>
+                </div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;">
+                    <div style="font-size:0.75rem;color:var(--gray-400);margin-bottom:0.25rem;">Stage</div>
+                    <div style="font-weight:600;">MVP Built</div>
+                </div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;">
+                    <div style="font-size:0.75rem;color:var(--gray-400);margin-bottom:0.25rem;">Domain</div>
+                    <div style="font-weight:600;">EdTech / AI</div>
+                </div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;">
+                    <div style="font-size:0.75rem;color:var(--gray-400);margin-bottom:0.25rem;">Target Market</div>
+                    <div style="font-weight:600;">Tier-2 Colleges</div>
+                </div>
+            </div>
+            <div style="display:flex;gap:1rem;">
+                <button class="vote-btn" style="flex:1;justify-content:center;" data-id="edulearn2">▲ <span
+                        class="vote-count">42</span> Upvote</button>
+                <a href="mailto:ecell@iimtindia.net" class="btn btn-steel"
+                    style="flex:1;justify-content:center;">Connect with Founder</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── ACHIEVEMENT WALL ─── -->
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="section-heading reveal">
+                <div class="section-label" style="justify-content:center;">Hall of Fame</div>
+                <h2>Alumni <span class="gradient-text">Achievements</span></h2>
+                <p>Our alumni who went on to build successful ventures and make an impact</p>
+            </div>
+            <div class="grid-3 reveal">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem;">Ankit Verma — Batch 2023
+                        </div>
+                        <div style="font-size:0.8rem;color:var(--gray-400);">Co-founded AgriSense, raised ₹1.2Cr in seed
+                            funding. Now serving 5000+ farmers.</div>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🥇</div>
+                    <div>
+                        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem;">Meera Dalal — Batch 2022
+                        </div>
+                        <div style="font-size:0.8rem;color:var(--gray-400);">Winner of Smart India Hackathon 2023. Now
+                            CTO of a funded EdTech startup.</div>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🚀</div>
+                    <div>
+                        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem;">Rohit Agarwal — Batch 2024
+                        </div>
+                        <div style="font-size:0.8rem;color:var(--gray-400);">Launched QuickHire, a campus recruitment
+                            platform now used by 20+ colleges.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <span>© 2026 E-Cell IIMT University</span>
+                <div style="display:flex;gap:1rem;">
+                    <a href="https://www.instagram.com/ecelliimtu/" target="_blank" class="footer-link">Instagram</a>
+                    <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                        class="footer-link">LinkedIn</a>
+                    <a href="mailto:ecell@iimtindia.net" class="footer-link">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="toast-container"></div>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('ideaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = 'Submitting...';
+            await new Promise(r => setTimeout(r, 1500));
+            showToast('Your startup idea has been submitted! We\'ll review it within 7 days. 🚀', 'success');
+            e.target.reset();
+            btn.disabled = false; btn.textContent = 'Submit Idea 🚀';
+        });
+    </script>
+</body>
+
+</html>

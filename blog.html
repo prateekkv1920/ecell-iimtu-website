@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog & News — E-Cell IIMTU</title>
+    <meta name="description"
+        content="Insights, stories and updates from E-Cell IIMT University — startup tips, event recaps, and founder interviews." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a><a href="events.html" class="nav-link">Events</a>
+                    <a href="startups.html" class="nav-link">Startups</a><a href="team.html" class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link active">Blog</a><a href="contact.html"
+                        class="nav-link">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;">Knowledge Hub</div>
+            <h1 class="animate-fadeInUp">Blog & <span class="gradient-text">News</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">Startup insights, event recaps, and founder stories from E-Cell
+                IIMTU</p>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <!-- Featured post -->
+            <div style="background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-xl);overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;min-height:300px;margin-bottom:3rem;"
+                class="reveal">
+                <div
+                    style="background:linear-gradient(135deg,var(--navy-600),var(--navy-500));display:flex;align-items:center;justify-content:center;font-size:8rem;">
+                    🚀</div>
+                <div style="padding:2.5rem;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;gap:0.5rem;margin-bottom:1rem;">
+                        <span class="badge badge-orange">Featured</span>
+                        <span class="badge badge-steel">Startup Insight</span>
+                    </div>
+                    <h2 style="font-size:1.75rem;margin-bottom:1rem;">How InnoHack 1.0 Launched 3 Real Startups</h2>
+                    <p style="color:var(--gray-400);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem;">A look back
+                        at our inaugural hackathon and the incredible teams that turned their 24-hour ideas into real
+                        businesses — including EduLeap and FarmWallet.</p>
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--gray-400);">
+                            <div
+                                style="width:28px;height:28px;border-radius:50%;background:var(--steel);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;">
+                                VA</div>
+                            Vansh Aneja • Mar 15, 2026
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="openModal('blogModal')">Read Article →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter -->
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all" data-filter-group="blog"
+                    data-target="blogGrid">All</button>
+                <button class="filter-btn" data-filter="insight" data-filter-group="blog" data-target="blogGrid">💡
+                    Insights</button>
+                <button class="filter-btn" data-filter="event" data-filter-group="blog" data-target="blogGrid">🗓️ Event
+                    Recap</button>
+                <button class="filter-btn" data-filter="founder" data-filter-group="blog" data-target="blogGrid">🎤
+                    Founders</button>
+                <button class="filter-btn" data-filter="tips" data-filter-group="blog" data-target="blogGrid">📚
+                    Tips</button>
+            </div>
+
+            <div class="grid-3" id="blogGrid">
+                <div class="blog-card reveal" data-category="founder">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#1a3a5c,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        🎤</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-steel">Founders</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Apr 1, 2026</span></div>
+                        <div class="blog-title">5 Lessons from IIMT's First Student Founder</div>
+                        <div class="blog-excerpt">Ankit Verma, who co-founded AgriSense after winning InnoHack, shares
+                            the 5 most important lessons from his entrepreneurial journey — including the moment he
+                            almost quit.</div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">P</div>By Prateek
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card reveal" data-category="tips">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#2d1a4a,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        📚</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-gray">Tips</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Mar 20, 2026</span></div>
+                        <div class="blog-title">10 Free Tools Every Student Startup Needs</div>
+                        <div class="blog-excerpt">Building a startup on zero budget? Here are 10 powerful free tools —
+                            from Figma for design to Notion for project management — that will supercharge your student
+                            venture.</div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">VA</div>By Vansh Aneja
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card reveal" data-category="event">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#1a4a2d,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        🏆</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-green">Event Recap</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Jan 20, 2026</span></div>
+                        <div class="blog-title">InnoHack 1.0: 120 Students, 24 Hours, 3 Startups</div>
+                        <div class="blog-excerpt">A full recap of our inaugural hackathon — the energy, the ideas, the
+                            sleepless nights, and the incredible outcome. Plus: meet the winning teams!</div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">VA</div>By Vansh Aneja
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card reveal" data-category="insight">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#4a2d1a,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        💡</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-orange">Insight</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Mar 5, 2026</span></div>
+                        <div class="blog-title">Why Meerut is Becoming UP's Next Startup Hub</div>
+                        <div class="blog-excerpt">Rising tier-2 cities are the next frontier for Indian
+                            entrepreneurship. We dig into why Meerut — and IIMT University — are at the center of this
+                            shift.</div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">P</div>By Prateek
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card reveal" data-category="tips">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#1a3a4a,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        🧠</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-gray">Tips</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Feb 10, 2026</span></div>
+                        <div class="blog-title">How to Write a Winning Hackathon Pitch in 5 Minutes</div>
+                        <div class="blog-excerpt">Most teams have great ideas but lose hackathons because of poor
+                            pitching. Here's our proven 5-minute pitch framework that has won 3 national competitions.
+                        </div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">VA</div>By Vansh Aneja
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card reveal" data-category="founder">
+                    <div class="blog-cover"
+                        style="background:linear-gradient(135deg,#2a3a1a,#0d1b2a);display:flex;align-items:center;justify-content:center;font-size:4rem;">
+                        🌱</div>
+                    <div class="blog-body">
+                        <div class="blog-meta"><span class="badge badge-steel">Founders</span><span
+                                style="font-size:0.75rem;color:var(--gray-400);">Feb 1, 2026</span></div>
+                        <div class="blog-title">From Zero to MVP in 30 Days: A Student's Story</div>
+                        <div class="blog-excerpt">Ananya Joshi built SkillKraft's first working MVP in just 30 days
+                            while handling a full academic semester. Here's exactly how she did it.</div>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <div class="author-avatar">P</div>By Prateek
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="openModal('blogModal')">Read →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Blog Article Modal ─── -->
+    <div class="modal-overlay" id="blogModal">
+        <div class="modal" style="max-width:720px;">
+            <div class="modal-header">
+                <h3>📖 Article</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <span class="badge badge-orange">Featured</span>
+                <span style="font-size:0.8rem;color:var(--gray-400);">March 15, 2026 • By Vansh Aneja</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:1.25rem;">How InnoHack 1.0 Launched 3 Real Startups</h2>
+            <div
+                style="color:var(--gray-400);font-size:0.9rem;line-height:1.8;max-height:55vh;overflow-y:auto;padding-right:0.5rem;">
+                <p style="margin-bottom:1rem;">When we launched InnoHack 1.0 back in January 2026, we had a simple goal:
+                    create a space where IIMT students could turn their ideas into something real in 24 hours. What
+                    happened exceeded every expectation we had.</p>
+                <p style="margin-bottom:1rem;">120 students. 30 teams. 24 hours. The innovation lab buzzed with energy
+                    from 10 AM on January 15th to 10 AM on January 16th. Red Bull cans, whiteboard markers, and the
+                    smell of instant noodles filled the air.</p>
+                <h4 style="color:var(--white);margin:1.25rem 0 0.75rem;">The Winning Teams</h4>
+                <p style="margin-bottom:1rem;"><strong style="color:var(--steel-light);">1st Place — EduLeap (₹25,000
+                        prize):</strong> Rahul Sharma and his team built a working prototype of an AI-powered adaptive
+                    learning platform in just 18 hours. The demo blew the judges away. EduLeap is now in active
+                    development with 500+ beta users.</p>
+                <p style="margin-bottom:1rem;"><strong style="color:var(--steel-light);">2nd Place — FarmWallet (₹15,000
+                        prize):</strong> Priya Singh's team identified a real problem — farmers couldn't access
+                    micro-loans quickly. Their digital wallet prototype connected farmers to lenders in under 5 minutes.
+                    FarmWallet is now piloting in 3 villages near Meerut.</p>
+                <p style="margin-bottom:1rem;"><strong style="color:var(--steel-light);">3rd Place — HealthCircle
+                        (₹10,000 prize):</strong> Aryan Gupta's telemedicine concept connected rural patients to
+                    specialists via WhatsApp-based intake forms. Simple, elegant, impactful.</p>
+                <h4 style="color:var(--white);margin:1.25rem 0 0.75rem;">Key Lessons for Future Hackathon Participants
+                </h4>
+                <p style="margin-bottom:0.75rem;">• <strong>Solve a real problem</strong> — don't build what's
+                    impressive, build what's needed.</p>
+                <p style="margin-bottom:0.75rem;">• <strong>Demo > Deck</strong> — the teams that won showed working
+                    prototypes, not just slides.</p>
+                <p style="margin-bottom:0.75rem;">• <strong>Speed of execution matters</strong> — teams that started
+                    coding by 10:30 AM did significantly better.</p>
+                <p style="margin-bottom:1rem;">InnoHack 2.0 is coming April 20th, 2026. Register now — because this
+                    year, we're doubling the prize pool and bringing in VCs to judge.</p>
+            </div>
+            <div style="margin-top:1.5rem;display:flex;gap:1rem;">
+                <a href="events.html" class="btn btn-primary">Register for InnoHack 2.0 →</a>
+                <button class="btn btn-secondary" onclick="closeModal('blogModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <span>© 2026 E-Cell IIMT University</span>
+                <div style="display:flex;gap:1rem;">
+                    <a href="https://www.instagram.com/ecelliimtu/" target="_blank" class="footer-link">Instagram</a>
+                    <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                        class="footer-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>

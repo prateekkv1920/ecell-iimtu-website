@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Cell IIMTU — Fueling Innovation, Empowering Entrepreneurs</title>
+  <meta name="description" content="E-Cell IIMT University is a dynamic platform dedicated to nurturing the entrepreneurial spirit and fostering innovation among students." />
+  <meta property="og:title" content="E-Cell IIMTU — Fueling Innovation" />
+  <meta property="og:description" content="The official entrepreneurship cell of IIMT University, Meerut. Workshops, hackathons, startup support, and more." />
+  <meta property="og:image" content="og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* ── Home-specific styles ── */
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(74,123,157,0.15); border: 1px solid rgba(74,123,157,0.3);
+      border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.8rem;
+      color: var(--steel-light); font-weight: 600; margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .hero-badge::before { content: '⚡'; }
+
+    .hero-title { margin-bottom: 1.25rem; }
+    .hero-title .line1 { display: block; color: var(--white); }
+    .hero-title .line2 { display: block; }
+    .hero-subtitle { font-size: 1.1rem; color: var(--gray-400); max-width: 580px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-scroll {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.8rem; color: var(--gray-400);
+    }
+    .hero-scroll-line { width: 40px; height: 1px; background: var(--border); }
+
+    /* Floating bolt decoration */
+    .hero-bolt {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.08;
+      font-size: 400px;
+      line-height: 1;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+      user-select: none;
+    }
+
+    /* About section */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy-600), var(--navy-500));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-visual-bolt {
+      font-size: 8rem;
+      animation: bolt-pulse 3s ease-in-out infinite;
+      display: block;
+    }
+    .about-visual-text {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: all var(--transition);
+    }
+    .pillar:hover { border-color: var(--border-strong); }
+    .pillar-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .pillar-title { font-family: var(--font-heading); font-weight: 700; font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--gray-400); }
+
+    /* Mentors strip */
+    .mentor-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .mentor-mini {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all var(--transition);
+    }
+    .mentor-mini:hover { border-color: var(--border-strong); background: var(--surface-hover); }
+    .mentor-avatar-sm {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--steel), var(--navy-600));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-weight: 800; font-size: 1rem; color: #fff;
+    }
+    .mentor-info-name { font-weight: 600; font-size: 0.875rem; }
+    .mentor-info-role { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* Student body */
+    .student-strip {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .student-card {
+      background: linear-gradient(135deg, var(--navy-600), var(--navy-700));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      transition: all var(--transition);
+      min-width: 200px;
+    }
+    .student-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .student-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--steel), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: #fff;
+      margin: 0 auto 1rem;
+      border: 3px solid rgba(255,255,255,0.1);
+    }
+    .student-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .student-role { font-size: 0.8rem; color: var(--orange); font-weight: 600; }
+
+    /* IG Feed placeholder */
+    .ig-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; border-radius: var(--radius-lg); overflow: hidden; }
+    .ig-item {
+      aspect-ratio: 1;
+      background: var(--navy-600);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; overflow: hidden; position: relative;
+      color: var(--gray-600); font-size: 1.5rem;
+      transition: all var(--transition);
+    }
+    .ig-item:hover .ig-overlay { opacity: 1; }
+    .ig-overlay {
+      position: absolute; inset: 0;
+      background: rgba(255,107,53,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .mentor-strip { grid-template-columns: 1fr 1fr; }
+      .ig-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero-bolt { display: none; }
+    }
+    @media (max-width: 480px) {
+      .mentor-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span style="font-size:1.8rem;">⚡</span>
+        <div>
+          <div style="line-height:1;">E-Cell</div>
+          <div style="font-size:0.65rem; font-weight:500; color:var(--steel-light); letter-spacing:0.12em;">IIMTU</div>
+        </div>
+      </a>
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="startups.html" class="nav-link">Startups</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+        <a href="contact.html" class="btn-nav">Join E-Cell</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <span class="hero-bolt">⚡</span>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge animate-fadeInUp">IIMT University Entrepreneurship Cell</div>
+      <h1 class="hero-title animate-fadeInUp anim-delay-1">
+        <span class="line1">Fueling Innovation,</span>
+        <span class="line2 gradient-text">Empowering Entrepreneurs</span>
+      </h1>
+      <p class="hero-subtitle animate-fadeInUp anim-delay-2">
+        E-Cell IIMT University cultivates creativity, leadership, and business acumen — providing resources, mentorship, and opportunities to transform ideas into successful ventures.
+      </p>
+      <div class="hero-ctas animate-fadeInUp anim-delay-3">
+        <a href="events.html" class="btn btn-primary btn-lg">
+          🗓️ Upcoming Events
+        </a>
+        <a href="contact.html" class="btn btn-secondary btn-lg">
+          🚀 Join E-Cell
+        </a>
+      </div>
+      <div class="hero-scroll animate-fadeInUp anim-delay-4">
+        <span class="hero-scroll-line"></span>
+        <span>Scroll to explore</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<section class="section-sm">
+  <div class="container">
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-number counter" data-count="25" data-suffix="+">0+</div>
+        <div class="stat-label">Events Held</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-count="12" data-suffix="+">0+</div>
+        <div class="stat-label">Startups Supported</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-count="500" data-suffix="+">0+</div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-count="8" data-suffix="+">0+</div>
+        <div class="stat-label">Hackathons</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURED EVENT ─── -->
+<section class="section-sm" style="padding-top:0;">
+  <div class="container">
+    <div class="section-label reveal">Featured Event</div>
+    <div class="featured-event reveal">
+      <div class="featured-event-content">
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+          <span class="badge badge-orange">🔥 Upcoming</span>
+          <span class="badge badge-steel">🛠️ Hackathon</span>
+        </div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1rem;">InnoHack 2.0<br><span style="color:var(--steel-light);">24-Hour Startup Challenge</span></h2>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+          <span style="font-size:0.875rem;color:var(--gray-400);display:flex;align-items:center;gap:0.4rem;">📅 April 20, 2026</span>
+          <span style="font-size:0.875rem;color:var(--gray-400);display:flex;align-items:center;gap:0.4rem;">📍 IIMT University, Meerut</span>
+          <span style="font-size:0.875rem;color:var(--gray-400);display:flex;align-items:center;gap:0.4rem;">👥 Open to All Students</span>
+        </div>
+        <p style="color:var(--gray-400);font-size:0.9rem;margin-bottom:2rem;max-width:400px;line-height:1.7;">
+          24 hours. 1 idea. Build, pitch, and win. Compete with the best minds at IIMT University to build innovative solutions for real-world problems.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="events.html" class="btn btn-primary">Register Now →</a>
+          <a href="events.html" class="btn btn-secondary">View Details</a>
+        </div>
+      </div>
+      <div class="featured-event-img">⚡</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-label">About E-Cell</div>
+        <h2 style="margin-bottom:1.5rem;">Building Tomorrow's <span class="gradient-text">Entrepreneurs</span> Today</h2>
+        <p style="color:var(--gray-400);line-height:1.8;margin-bottom:1.5rem;">
+          E-Cell IIMT University is a dynamic platform dedicated to nurturing the entrepreneurial spirit and fostering innovation among students. Our mission is to cultivate a culture of creativity, leadership, and business acumen.
+        </p>
+        <p style="color:var(--gray-400);line-height:1.8;margin-bottom:2rem;">
+          We provide resources, mentorship, and opportunities for students to develop their ideas into successful ventures through workshops, hackathons, startup support, and networking events.
+        </p>
+        <a href="contact.html" class="btn btn-primary">Join Our Journey →</a>
+      </div>
+      <div class="reveal">
+        <div class="about-visual">
+          <span class="about-visual-bolt">⚡</span>
+          <div class="about-visual-text">Innovation × Action</div>
+        </div>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🎓</div>
+            <div class="pillar-title">Mentorship</div>
+            <div class="pillar-desc">1:1 guidance from industry experts</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🏆</div>
+            <div class="pillar-title">Competitions</div>
+            <div class="pillar-desc">Hackathons & pitch battles</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">Networking</div>
+            <div class="pillar-desc">Connect with founders & investors</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🚀</div>
+            <div class="pillar-title">Launchpad</div>
+            <div class="pillar-desc">From idea to startup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── UPCOMING EVENTS PREVIEW ─── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="justify-content:center;">What's On</div>
+      <h2>Upcoming <span class="gradient-text">Events</span></h2>
+      <p>Don't miss out on our latest workshops, hackathons, and startup pitch sessions</p>
+    </div>
+    <div class="grid-3 reveal">
+      <!-- Event 1 -->
+      <div class="event-card">
+        <div class="event-card-banner" style="background:linear-gradient(135deg,#1a3a5c,#0d1b2a);font-size:4rem;">🏆</div>
+        <div class="event-card-body">
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+            <span class="badge badge-orange">Upcoming</span>
+            <span class="badge badge-steel">Hackathon</span>
+          </div>
+          <div class="event-card-meta">
+            <span class="event-meta-item">📅 Apr 20, 2026</span>
+            <span class="event-meta-item">📍 IIMT Campus</span>
+          </div>
+          <div class="event-card-title">InnoHack 2.0 — 24-Hour Startup Challenge</div>
+          <div class="event-card-desc">Compete with top student innovators to build solutions for real-world challenges in 24 hours.</div>
+          <div class="event-card-footer">
+            <a href="events.html" class="btn btn-primary btn-sm">Register</a>
+            <span style="font-size:0.75rem;color:var(--gray-400);">18 days left</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-card">
+        <div class="event-card-banner" style="background:linear-gradient(135deg,#2d1a4a,#0d1b2a);font-size:4rem;">💡</div>
+        <div class="event-card-body">
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+            <span class="badge badge-orange">Upcoming</span>
+            <span class="badge badge-gray">Workshop</span>
+          </div>
+          <div class="event-card-meta">
+            <span class="event-meta-item">📅 May 5, 2026</span>
+            <span class="event-meta-item">📍 Seminar Hall</span>
+          </div>
+          <div class="event-card-title">Business Model Canvas Masterclass</div>
+          <div class="event-card-desc">Learn how to design a winning business model from scratch with industry mentors.</div>
+          <div class="event-card-footer">
+            <a href="events.html" class="btn btn-primary btn-sm">Register</a>
+            <span style="font-size:0.75rem;color:var(--gray-400);">33 days left</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-card">
+        <div class="event-card-banner" style="background:linear-gradient(135deg,#1a4a2d,#0d1b2a);font-size:4rem;">🎤</div>
+        <div class="event-card-body">
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+            <span class="badge badge-orange">Upcoming</span>
+            <span class="badge badge-green">Talk</span>
+          </div>
+          <div class="event-card-meta">
+            <span class="event-meta-item">📅 May 15, 2026</span>
+            <span class="event-meta-item">📍 Auditorium</span>
+          </div>
+          <div class="event-card-title">Founder's Talk: Zero to One</div>
+          <div class="event-card-desc">Hear firsthand from successful alumni founders about their entrepreneurial journey and key lessons.</div>
+          <div class="event-card-footer">
+            <a href="events.html" class="btn btn-primary btn-sm">Register</a>
+            <span style="font-size:0.75rem;color:var(--gray-400);">43 days left</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4 reveal">
+      <a href="events.html" class="btn btn-secondary">View All Events →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FACULTY MENTORS ─── -->
+<section class="section" style="background:var(--navy-800);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="justify-content:center;">Leadership</div>
+      <h2>Faculty <span class="gradient-text">Mentors</span></h2>
+      <p>Guided by experienced academic and industry professionals</p>
+    </div>
+    <div class="mentor-strip reveal">
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">VS</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Dr. Vaibhav Sharma</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">AR</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Dr. Akshay Raj</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">ZT</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Zeba Tyagi</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">VS</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Vaibhav Singh</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">ZN</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Zoya Naaz</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+      <div class="mentor-mini">
+        <div class="mentor-avatar-sm">AK</div>
+        <div class="mentor-info">
+          <div class="mentor-info-name">Abhishek Khandelwal</div>
+          <div class="mentor-info-role">Faculty Mentor</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4 reveal">
+      <a href="team.html" class="btn btn-secondary">Meet the Full Team →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STUDENT BODY ─── -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="justify-content:center;">Student Body</div>
+      <h2>Meet the <span class="gradient-text">Core Team</span></h2>
+      <p>The student leaders driving E-Cell IIMTU forward</p>
+    </div>
+    <div class="student-strip reveal">
+      <div class="student-card">
+        <div class="student-avatar">P</div>
+        <div class="student-name">Prateek</div>
+        <div class="student-role">Core Member</div>
+        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:0.75rem;">
+          <a href="#" class="social-btn" title="LinkedIn">in</a>
+          <a href="#" class="social-btn" title="Email">✉</a>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">VA</div>
+        <div class="student-name">Vansh Aneja</div>
+        <div class="student-role">President</div>
+        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:0.75rem;">
+          <a href="#" class="social-btn" title="LinkedIn">in</a>
+          <a href="#" class="social-btn" title="Email">✉</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4 reveal">
+      <a href="team.html" class="btn btn-secondary">See All Members →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INSTAGRAM FEED ─── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="justify-content:center;">📸 Social</div>
+      <h2>Follow Our <span class="gradient-text">Journey</span></h2>
+      <p>Stay updated on our latest activities on Instagram</p>
+    </div>
+    <div class="ig-grid reveal">
+      <div class="ig-item">📸<div class="ig-overlay">❤️</div></div>
+      <div class="ig-item">🏆<div class="ig-overlay">❤️</div></div>
+      <div class="ig-item">🚀<div class="ig-overlay">❤️</div></div>
+      <div class="ig-item">💡<div class="ig-overlay">❤️</div></div>
+      <div class="ig-item">🎤<div class="ig-overlay">❤️</div></div>
+      <div class="ig-item">⚡<div class="ig-overlay">❤️</div></div>
+    </div>
+    <div class="text-center mt-3 reveal">
+      <a href="https://www.instagram.com/ecelliimtu/" target="_blank" rel="noopener" class="btn btn-secondary">
+        📸 @ecelliimtu — Follow on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ─── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="newsletter-bar reveal">
+      <div class="section-label" style="justify-content:center;">Stay in the Loop</div>
+      <h2>Get Our <span class="gradient-text">Newsletter</span></h2>
+      <p style="color:var(--gray-400);margin:0.75rem 0 0;font-size:0.95rem;">Startup tips, event announcements, and opportunities — straight to your inbox.</p>
+      <form class="newsletter-form newsletter-form-el">
+        <input type="text" name="name" class="form-control" placeholder="Your name" />
+        <input type="email" name="email" class="form-control" placeholder="Your email" required />
+        <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Subscribe ⚡</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo" style="display:inline-flex;margin-bottom:0;">
+          <span style="font-size:2rem;">⚡</span>
+          <div>
+            <div style="line-height:1;font-size:1.2rem;">E-Cell IIMTU</div>
+            <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMT UNIVERSITY</div>
+          </div>
+        </a>
+        <p>Fueling Innovation, Empowering Entrepreneurs at IIMT University, Meerut.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/ecelliimtu/" target="_blank" class="footer-social" title="Instagram">📸</a>
+          <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank" class="footer-social" title="LinkedIn">in</a>
+          <a href="mailto:ecell@iimtindia.net" class="footer-social" title="Email">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="events.html" class="footer-link">Events</a>
+          <a href="startups.html" class="footer-link">Startups</a>
+          <a href="team.html" class="footer-link">Team</a>
+          <a href="blog.html" class="footer-link">Blog</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <div class="footer-links">
+          <a href="events.html" class="footer-link">Hackathons</a>
+          <a href="events.html" class="footer-link">Workshops</a>
+          <a href="events.html" class="footer-link">Startup Pitches</a>
+          <a href="startups.html" class="footer-link">Startup Showcase</a>
+          <a href="newsletter-archive.html" class="footer-link">Newsletter Archive</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <p>✉ ecell@iimtindia.net</p>
+          <p>📞 +91 63958 49822</p>
+          <p>📍 IIMT University, Meerut, UP</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 E-Cell IIMT University. All rights reserved.</span>
+      <a href="admin/login.html" style="color:var(--gray-600);font-size:0.75rem;transition:color var(--transition);" onmouseover="this.style.color='var(--gray-400)'" onmouseout="this.style.color='var(--gray-600)'">Admin Panel</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

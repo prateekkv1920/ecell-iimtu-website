@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Manager — E-Cell Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo"><a href="../index.html" class="navbar-logo"
+                    style="display:inline-flex;"><span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a></div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div>
+                <a href="dashboard.html" class="admin-nav-item"><span class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item active"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item"><span class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item"><span class="admin-nav-icon">📅</span>Mentor Bookings</a>
+                <a href="registrations.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Team Manager</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">Manage faculty and student team members
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('addMemberModal')">➕ Add Member</button>
+                </div>
+            </div>
+            <div class="admin-content">
+                <div class="admin-page-title" style="margin-bottom:2rem;">Team Manager 👥</div>
+
+                <!-- Faculty Mentors -->
+                <h3 style="font-size:1rem;margin-bottom:1rem;">🎓 Faculty Mentors</h3>
+                <div class="admin-table-wrap" style="margin-bottom:2rem;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>LinkedIn</th>
+                                <th>Order</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--steel),var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        VS</div>
+                                </td>
+                                <td><strong>Dr. Vaibhav Sharma</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>1</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2d4a6e,var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        AR</div>
+                                </td>
+                                <td><strong>Dr. Akshay Raj</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>2</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4a2d6e,var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        ZT</div>
+                                </td>
+                                <td><strong>Zeba Tyagi</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>3</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6e4a2d,var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        VS</div>
+                                </td>
+                                <td><strong>Vaibhav Singh</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>4</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2d6e4a,var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        ZN</div>
+                                </td>
+                                <td><strong>Zoya Naaz</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>5</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6e2d4a,var(--navy-600));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        AK</div>
+                                </td>
+                                <td><strong>Abhishek Khandelwal</strong></td>
+                                <td>Faculty Mentor</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>6</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Student Body -->
+                <h3 style="font-size:1rem;margin-bottom:1rem;">🎯 Student Body</h3>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>LinkedIn</th>
+                                <th>Order</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--steel),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        VA</div>
+                                </td>
+                                <td><strong>Vansh Aneja</strong></td>
+                                <td>President</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>1</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--steel));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;">
+                                        P</div>
+                                </td>
+                                <td><strong>Prateek</strong></td>
+                                <td>Core Member</td>
+                                <td><a href="#" style="color:var(--steel-light);">LinkedIn</a></td>
+                                <td>2</td>
+                                <td>
+                                    <div class="table-actions"><button class="table-action-btn primary"
+                                            onclick="openModal('editMemberModal')">Edit</button><button
+                                            class="table-action-btn danger">Delete</button></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ADD MEMBER MODAL -->
+    <div class="modal-overlay" id="addMemberModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>➕ Add Team Member</h3><button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <form id="addMemberForm">
+                <div class="form-group"><label class="form-label">Full Name *</label><input type="text"
+                        class="form-control" placeholder="Dr. First Last" required /></div>
+                <div class="form-group"><label class="form-label">Role / Position *</label><input type="text"
+                        class="form-control" placeholder="Faculty Mentor" required /></div>
+                <div class="form-group"><label class="form-label">Category *</label><select class="form-control">
+                        <option value="faculty">Faculty Mentor</option>
+                        <option value="student">Student Body</option>
+                    </select></div>
+                <div class="form-group"><label class="form-label">Profile Photo</label><input type="file"
+                        class="form-control" accept="image/*" /></div>
+                <div class="form-group"><label class="form-label">LinkedIn URL</label><input type="url"
+                        class="form-control" placeholder="https://linkedin.com/in/..." /></div>
+                <div class="form-group"><label class="form-label">Bio (optional)</label><textarea class="form-control"
+                        rows="2" placeholder="Short bio..."></textarea></div>
+                <div class="form-group"><label class="form-label">Display Order</label><input type="number"
+                        class="form-control" value="1" min="1" /></div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button type="submit" class="btn btn-primary">Add Member</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT MEMBER MODAL -->
+    <div class="modal-overlay" id="editMemberModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>✏️ Edit Team Member</h3><button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <form>
+                <div class="form-group"><label class="form-label">Full Name *</label><input type="text"
+                        class="form-control" value="Dr. Vaibhav Sharma" /></div>
+                <div class="form-group"><label class="form-label">Role / Position *</label><input type="text"
+                        class="form-control" value="Faculty Mentor" /></div>
+                <div class="form-group"><label class="form-label">Category *</label><select class="form-control">
+                        <option selected>Faculty Mentor</option>
+                        <option>Student Body</option>
+                    </select></div>
+                <div class="form-group"><label class="form-label">Profile Photo</label><input type="file"
+                        class="form-control" accept="image/*" /></div>
+                <div class="form-group"><label class="form-label">LinkedIn URL</label><input type="url"
+                        class="form-control" value="https://linkedin.com/in/" /></div>
+                <div class="form-group"><label class="form-label">Display Order</label><input type="number"
+                        class="form-control" value="1" min="1" /></div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button type="button" class="btn btn-primary"
+                        onclick="showToast('Member updated!','success');closeModal('editMemberModal')">Save
+                        Changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); localStorage.removeItem('ecell-admin-auth'); window.location.href = 'login.html'; });
+        document.getElementById('adminMenuToggle').addEventListener('click', () => document.getElementById('adminSidebar').classList.toggle('open'));
+        document.getElementById('addMemberForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = 'Adding...';
+            await new Promise(r => setTimeout(r, 1000));
+            showToast('Team member added!', 'success');
+            closeModal('addMemberModal');
+            btn.disabled = false; btn.textContent = 'Add Member';
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>

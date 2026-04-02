@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrations — E-Cell Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo"><a href="../index.html" class="navbar-logo"
+                    style="display:inline-flex;"><span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a></div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div><a href="dashboard.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item"><span class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item"><span class="admin-nav-icon">📅</span>Mentor Bookings</a>
+                <a href="registrations.html" class="admin-nav-item active"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Event Registrations</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">View and manage event registrations &
+                            check-ins</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="btn btn-secondary btn-sm" onclick="exportRegsCSV()">⬇️ Export CSV</button>
+                </div>
+            </div>
+            <div class="admin-content">
+                <div class="admin-page-title" style="margin-bottom:2rem;">Registrations 🎟️</div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon orange">🎟️</div>
+                        <div>
+                            <div class="admin-stat-num">248</div>
+                            <div class="admin-stat-label">Total Registrations</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon steel">⚡</div>
+                        <div>
+                            <div class="admin-stat-num">87</div>
+                            <div class="admin-stat-label">InnoHack 2.0</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon green">✅</div>
+                        <div>
+                            <div class="admin-stat-num">34</div>
+                            <div class="admin-stat-label">Checked In</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon purple">📱</div>
+                        <div>
+                            <div class="admin-stat-num">214</div>
+                            <div class="admin-stat-label">QR Codes Sent</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filters -->
+                <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;">
+                    <input type="text" id="regSearch" class="form-control" placeholder="Search by name or enrollment..."
+                        style="max-width:280px;" />
+                    <select class="form-control" id="regEventFilter" style="max-width:220px;"
+                        onchange="filterByEvent(this.value)">
+                        <option value="">All Events</option>
+                        <option value="innohack">InnoHack 2.0</option>
+                        <option value="bmc">BMC Masterclass</option>
+                        <option value="founder">Founder's Talk</option>
+                        <option value="pitchfest">Pitch Fest 2026</option>
+                    </select>
+                    <div class="tabs" style="margin:0;">
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">Checked In</button>
+                        <button class="tab-btn">Not Checked In</button>
+                    </div>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="regsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Enrollment</th>
+                                <th>Event</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>QR</th>
+                                <th>Checked In</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-event="innohack">
+                                <td><strong>Rohan Sharma</strong></td>
+                                <td>rohan@mail.com</td>
+                                <td>IIMTU2024CS001</td>
+                                <td>InnoHack 2.0</td>
+                                <td>+91 98765 00001</td>
+                                <td>Apr 1</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Rohan Sharma')">🔍 QR</button>
+                                </td>
+                                <td><span class="badge badge-green">✅ Yes</span></td>
+                                <td><button class="table-action-btn primary"
+                                        onclick="toggleCheckIn(this)">Un-check</button></td>
+                            </tr>
+                            <tr data-event="innohack">
+                                <td><strong>Priya Singh</strong></td>
+                                <td>priya@mail.com</td>
+                                <td>IIMTU2024CS002</td>
+                                <td>InnoHack 2.0</td>
+                                <td>+91 98765 00002</td>
+                                <td>Apr 1</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Priya Singh')">🔍 QR</button></td>
+                                <td><span class="badge badge-gray">❌ No</span></td>
+                                <td><button class="table-action-btn primary" onclick="toggleCheckIn(this)">Check
+                                        In</button></td>
+                            </tr>
+                            <tr data-event="bmc">
+                                <td><strong>Aryan Gupta</strong></td>
+                                <td>aryan@mail.com</td>
+                                <td>IIMTU2024EC001</td>
+                                <td>BMC Masterclass</td>
+                                <td>+91 98765 00003</td>
+                                <td>Mar 31</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Aryan Gupta')">🔍 QR</button></td>
+                                <td><span class="badge badge-gray">❌ No</span></td>
+                                <td><button class="table-action-btn primary" onclick="toggleCheckIn(this)">Check
+                                        In</button></td>
+                            </tr>
+                            <tr data-event="founder">
+                                <td><strong>Sneha Rao</strong></td>
+                                <td>sneha@mail.com</td>
+                                <td>IIMTU2024ME002</td>
+                                <td>Founder's Talk</td>
+                                <td>+91 98765 00004</td>
+                                <td>Mar 30</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Sneha Rao')">🔍 QR</button></td>
+                                <td><span class="badge badge-green">✅ Yes</span></td>
+                                <td><button class="table-action-btn primary"
+                                        onclick="toggleCheckIn(this)">Un-check</button></td>
+                            </tr>
+                            <tr data-event="innohack">
+                                <td><strong>Vaibhav Mehta</strong></td>
+                                <td>vaibhav@mail.com</td>
+                                <td>IIMTU2024CS005</td>
+                                <td>InnoHack 2.0</td>
+                                <td>+91 98765 00005</td>
+                                <td>Mar 29</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Vaibhav Mehta')">🔍 QR</button>
+                                </td>
+                                <td><span class="badge badge-gray">❌ No</span></td>
+                                <td><button class="table-action-btn primary" onclick="toggleCheckIn(this)">Check
+                                        In</button></td>
+                            </tr>
+                            <tr data-event="pitchfest">
+                                <td><strong>Ananya Joshi</strong></td>
+                                <td>ananya@mail.com</td>
+                                <td>IIMTU2024IT003</td>
+                                <td>Pitch Fest 2026</td>
+                                <td>+91 98765 00006</td>
+                                <td>Mar 28</td>
+                                <td><button class="table-action-btn" onclick="viewQR('Ananya Joshi')">🔍 QR</button>
+                                </td>
+                                <td><span class="badge badge-gray">❌ No</span></td>
+                                <td><button class="table-action-btn primary" onclick="toggleCheckIn(this)">Check
+                                        In</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- QR View Modal -->
+    <div class="modal-overlay" id="qrViewModal">
+        <div class="modal" style="max-width:380px;text-align:center;">
+            <div class="modal-header">
+                <h3>🎟️ Registration QR Code</h3><button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div style="margin-bottom:0.75rem;"><span id="qrStudentName" style="font-weight:700;"></span></div>
+            <div class="qr-canvas"><canvas id="adminQRCanvas"></canvas></div>
+            <p style="font-size:0.75rem;color:var(--gray-400);margin:0.75rem 0;">Scan to verify attendance at event
+                entrance</p>
+            <button class="btn btn-primary w-full" style="margin-bottom:0.5rem;" onclick="checkInFromQR()">✅ Mark as
+                Checked In</button>
+            <button class="btn btn-secondary w-full" onclick="downloadAdminQR()">⬇️ Download QR</button>
+        </div>
+    </div>
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); localStorage.removeItem('ecell-admin-auth'); window.location.href = 'login.html'; });
+        document.getElementById('adminMenuToggle').addEventListener('click', () => document.getElementById('adminSidebar').classList.toggle('open'));
+        initTableSearch('regSearch', 'regsTable');
+        function filterByEvent(val) {
+            document.querySelectorAll('#regsTable tbody tr').forEach(row => {
+                row.style.display = (!val || row.dataset.event === val) ? '' : 'none';
+            });
+        }
+        function toggleCheckIn(btn) {
+            const row = btn.closest('tr');
+            const badge = row.querySelector('td:nth-child(8) .badge');
+            if (btn.textContent === 'Check In') {
+                badge.className = 'badge badge-green'; badge.textContent = '✅ Yes';
+                btn.textContent = 'Un-check';
+                showToast('Checked in! ✅', 'success');
+            } else {
+                badge.className = 'badge badge-gray'; badge.textContent = '❌ No';
+                btn.textContent = 'Check In';
+                showToast('Check-in removed', 'info');
+            }
+        }
+        function viewQR(name) {
+            document.getElementById('qrStudentName').textContent = name;
+            openModal('qrViewModal');
+            generateQR('ECELL-' + name.replace(' ', '-').toUpperCase(), 'adminQRCanvas', 180);
+        }
+        function checkInFromQR() {
+            showToast('Student checked in via QR! ✅', 'success');
+            closeModal('qrViewModal');
+        }
+        function downloadAdminQR() {
+            const canvas = document.getElementById('adminQRCanvas');
+            const a = document.createElement('a'); a.download = 'qr.png'; a.href = canvas.toDataURL(); a.click();
+        }
+        function exportRegsCSV() {
+            const rows = [['Name', 'Email', 'Enrollment', 'Event', 'Phone', 'Date', 'Checked In']];
+            document.querySelectorAll('#regsTable tbody tr').forEach(r => {
+                const c = r.querySelectorAll('td');
+                rows.push([c[0]?.textContent.trim(), c[1]?.textContent, c[2]?.textContent, c[3]?.textContent, c[4]?.textContent, c[5]?.textContent, c[7]?.textContent.includes('Yes') ? 'Yes' : 'No']);
+            });
+            const csv = rows.map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'registrations.csv'; a.click();
+            showToast('Registrations exported!', 'success');
+        }
+    </script>
+</body>
+
+</html>

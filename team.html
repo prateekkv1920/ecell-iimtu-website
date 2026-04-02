@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team — E-Cell IIMTU</title>
+    <meta name="description" content="Meet the faculty mentors and student leaders of E-Cell IIMT University." />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .mentor-booking-section {
+            background: linear-gradient(135deg, rgba(74, 123, 157, 0.08), rgba(13, 27, 42, 0.5));
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media(max-width:900px) {
+            .mentor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .student-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .mentor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a><a href="events.html" class="nav-link">Events</a>
+                    <a href="startups.html" class="nav-link">Startups</a><a href="team.html"
+                        class="nav-link active">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;">Leadership</div>
+            <h1 class="animate-fadeInUp">Meet the <span class="gradient-text">Team</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">Faculty mentors and student leaders driving E-Cell IIMTU forward
+            </p>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <!-- Faculty Mentors -->
+            <div class="section-heading reveal">
+                <div class="section-label" style="justify-content:center;">🎓 Faculty</div>
+                <h2>Faculty <span class="gradient-text">Mentors</span></h2>
+                <p>Experienced academics and industry professionals guiding our journey</p>
+            </div>
+            <div class="mentor-grid reveal" style="margin-bottom:5rem;">
+                <div class="team-card">
+                    <div class="team-card-avatar">VS</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Dr. Vaibhav Sharma</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Guiding startups with
+                            expertise in technology and management.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm" onclick="openBookingModal('Dr. Vaibhav Sharma')">Book
+                                1:1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#2d4a6e,#0d1b2a);">AR</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Dr. Akshay Raj</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Expert in business
+                            strategy and entrepreneurship ecosystems.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm" onclick="openBookingModal('Dr. Akshay Raj')">Book
+                                1:1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#4a2d6e,#0d1b2a);">ZT</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Zeba Tyagi</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Specialist in
+                            innovation, design thinking and startup culture.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm" onclick="openBookingModal('Zeba Tyagi')">Book
+                                1:1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#6e4a2d,#0d1b2a);">VS</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Vaibhav Singh</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Mentors teams on
+                            product development and go-to-market strategy.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm" onclick="openBookingModal('Vaibhav Singh')">Book
+                                1:1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#2d6e4a,#0d1b2a);">ZN</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Zoya Naaz</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Focuses on social
+                            entrepreneurship and sustainable startup models.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm" onclick="openBookingModal('Zoya Naaz')">Book
+                                1:1</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#6e2d4a,#0d1b2a);">AK</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Abhishek Khandelwal</div>
+                        <div class="team-card-role">Faculty Mentor</div>
+                        <p style="font-size:0.78rem;color:var(--gray-400);margin-bottom:0.75rem;">Expert in legal
+                            frameworks, IP rights, and startup compliance.</p>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn" title="LinkedIn">in</a>
+                            <button class="btn btn-primary btn-sm"
+                                onclick="openBookingModal('Abhishek Khandelwal')">Book 1:1</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Body -->
+            <div class="section-heading reveal">
+                <div class="section-label" style="justify-content:center;">🎯 Student Body</div>
+                <h2>Core <span class="gradient-text">Student Team</span></h2>
+                <p>The passionate student leaders running E-Cell day-to-day</p>
+            </div>
+            <div class="student-grid reveal">
+                <div class="team-card">
+                    <div class="team-card-avatar"
+                        style="background:linear-gradient(135deg,var(--steel),var(--orange));">VA</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Vansh Aneja</div>
+                        <div class="team-card-role" style="color:var(--orange);">President</div>
+                        <div class="team-card-actions">
+                            <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                                class="social-btn">in</a>
+                            <a href="mailto:ecell@iimtindia.net" class="social-btn">✉</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar"
+                        style="background:linear-gradient(135deg,var(--orange),var(--steel));">P</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Prateek</div>
+                        <div class="team-card-role" style="color:var(--steel-light);">Core Member</div>
+                        <div class="team-card-actions">
+                            <a href="#" class="social-btn">in</a>
+                            <a href="mailto:ecell@iimtindia.net" class="social-btn">✉</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Placeholder members -->
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#2d4a6e,#0d1b2a);">VP</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">Vice President</div>
+                        <div class="team-card-role">Position Open</div>
+                        <div class="team-card-actions">
+                            <a href="contact.html" class="btn btn-secondary btn-sm">Apply →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-avatar" style="background:linear-gradient(135deg,#4a2d2d,#0d1b2a);">GS</div>
+                    <div class="team-card-body">
+                        <div class="team-card-name">General Secretary</div>
+                        <div class="team-card-role">Position Open</div>
+                        <div class="team-card-actions">
+                            <a href="contact.html" class="btn btn-secondary btn-sm">Apply →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentor Booking CTA -->
+            <div class="mentor-booking-section reveal">
+                <div class="section-label" style="justify-content:center;">🗓️ Mentorship</div>
+                <h2 style="margin-bottom:1rem;">Book a <span class="gradient-text">1:1 Mentor Session</span></h2>
+                <p style="color:var(--gray-400);max-width:500px;margin:0 auto 2rem;">
+                    Get personalized guidance from our faculty mentors. Share your startup idea, get feedback, and chart
+                    your next steps.
+                </p>
+                <button class="btn btn-primary btn-lg" onclick="openBookingModal('')">Request Mentorship Session
+                    🚀</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── BOOKING MODAL ─── -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>📅 Request Mentor Session</h3>
+                <button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Select Mentor</label>
+                    <select class="form-control" id="bookingMentor" required>
+                        <option value="">Choose a mentor...</option>
+                        <option>Dr. Vaibhav Sharma</option>
+                        <option>Dr. Akshay Raj</option>
+                        <option>Zeba Tyagi</option>
+                        <option>Vaibhav Singh</option>
+                        <option>Zoya Naaz</option>
+                        <option>Abhishek Khandelwal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Name *</label>
+                    <input type="text" class="form-control" placeholder="Full name" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" placeholder="your@email.com" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Date *</label>
+                    <input type="date" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">What do you need help with? *</label>
+                    <textarea class="form-control" rows="3" placeholder="Describe your startup idea or question..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Send Request 📧</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <span>© 2026 E-Cell IIMT University</span>
+                <div style="display:flex;gap:1rem;">
+                    <a href="https://www.instagram.com/ecelliimtu/" target="_blank" class="footer-link">Instagram</a>
+                    <a href="https://www.linkedin.com/company/e-cell-iimtu/" target="_blank"
+                        class="footer-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-container"></div>
+    <script src="app.js"></script>
+    <script>
+        function openBookingModal(mentorName) {
+            openModal('bookingModal');
+            if (mentorName) {
+                const sel = document.getElementById('bookingMentor');
+                for (let opt of sel.options) {
+                    if (opt.value === mentorName || opt.text === mentorName) {
+                        sel.value = opt.value;
+                        break;
+                    }
+                }
+            }
+        }
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = 'Sending...';
+            await new Promise(r => setTimeout(r, 1500));
+            closeModal('bookingModal');
+            showToast('Mentorship request sent! 🎓 You\'ll receive a confirmation email within 24 hours.', 'success');
+            e.target.reset();
+            btn.disabled = false; btn.textContent = 'Send Request 📧';
+        });
+    </script>
+</body>
+
+</html>

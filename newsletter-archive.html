@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Archive — E-Cell IIMTU</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="index.html" class="navbar-logo"><span style="font-size:1.8rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;">E-Cell</div>
+                        <div style="font-size:0.65rem;font-weight:500;color:var(--steel-light);letter-spacing:0.12em;">
+                            IIMTU</div>
+                    </div>
+                </a>
+                <div class="navbar-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a><a href="events.html" class="nav-link">Events</a>
+                    <a href="startups.html" class="nav-link">Startups</a><a href="team.html" class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="navbar-actions">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <a href="contact.html" class="btn-nav">Join E-Cell</a>
+                    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class="container">
+            <div class="section-label" style="justify-content:center;">📧 Newsletters</div>
+            <h1 class="animate-fadeInUp">Newsletter <span class="gradient-text">Archive</span></h1>
+            <p class="animate-fadeInUp anim-delay-1">All past E-Cell IIMTU newsletters — startup news, event roundups,
+                and opportunities</p>
+        </div>
+    </div>
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <!-- Subscribe bar -->
+            <div class="newsletter-bar reveal" style="margin-bottom:3rem;">
+                <h3>Never Miss an Update 📬</h3>
+                <p style="color:var(--gray-400);margin:0.5rem 0 0;font-size:0.9rem;">Subscribe to get future newsletters
+                    in your inbox</p>
+                <form class="newsletter-form newsletter-form-el">
+                    <input type="text" name="name" class="form-control" placeholder="Your name" />
+                    <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+                    <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Subscribe ⚡</button>
+                </form>
+            </div>
+            <!-- Archive list -->
+            <div style="display:flex;flex-direction:column;gap:1rem;" class="reveal">
+                <div class="card" style="cursor:pointer;" onclick="openModal('nlModal3')">
+                    <div class="card-body"
+                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                            <div
+                                style="font-size:2rem;width:52px;height:52px;background:rgba(255,107,53,0.12);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;">
+                                📧</div>
+                            <div>
+                                <div style="font-weight:700;margin-bottom:0.25rem;">InnoHack 2.0 is Here — Register Now!
+                                    ⚡</div>
+                                <div style="font-size:0.8rem;color:var(--gray-400);">April 1, 2026 • Sent to 312
+                                    subscribers</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <span class="badge badge-green">Latest</span>
+                            <span style="font-size:0.875rem;color:var(--steel-light);">Read →</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="cursor:pointer;" onclick="openModal('nlModal2')">
+                    <div class="card-body"
+                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                            <div
+                                style="font-size:2rem;width:52px;height:52px;background:rgba(74,123,157,0.12);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;">
+                                📧</div>
+                            <div>
+                                <div style="font-weight:700;margin-bottom:0.25rem;">March Roundup: Design Thinking
+                                    Workshop & Startup Pitches</div>
+                                <div style="font-size:0.8rem;color:var(--gray-400);">March 15, 2026 • Sent to 287
+                                    subscribers</div>
+                            </div>
+                        </div>
+                        <span style="font-size:0.875rem;color:var(--steel-light);">Read →</span>
+                    </div>
+                </div>
+                <div class="card" style="cursor:pointer;" onclick="openModal('nlModal1')">
+                    <div class="card-body"
+                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                            <div
+                                style="font-size:2rem;width:52px;height:52px;background:rgba(74,123,157,0.12);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;">
+                                📧</div>
+                            <div>
+                                <div style="font-weight:700;margin-bottom:0.25rem;">Welcome to E-Cell IIMTU Newsletter —
+                                    InnoHack 1.0 Recap</div>
+                                <div style="font-size:0.8rem;color:var(--gray-400);">January 20, 2026 • Sent to 180
+                                    subscribers</div>
+                            </div>
+                        </div>
+                        <span style="font-size:0.875rem;color:var(--steel-light);">Read →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter Modals -->
+    <div class="modal-overlay" id="nlModal3">
+        <div class="modal" style="max-width:660px;">
+            <div class="modal-header">
+                <h3>📧 E-Cell IIMTU Newsletter — April 2026</h3><button class="modal-close"
+                    data-dismiss="modal">✕</button>
+            </div>
+            <div
+                style="color:var(--gray-400);font-size:0.9rem;line-height:1.8;max-height:60vh;overflow-y:auto;padding-right:0.5rem;">
+                <p style="margin-bottom:1rem;color:var(--white);font-weight:600;">Hello Entrepreneur! ⚡</p>
+                <p style="margin-bottom:1rem;">Big news — <strong style="color:var(--orange);">InnoHack 2.0 is
+                        officially open for registrations!</strong> This is our biggest hackathon yet — 24 hours,
+                    ₹50,000 in prizes, and VCs joining as judges. April 20th, IIMT Campus.</p>
+                <p style="margin-bottom:1rem;">🗓️ <strong>Also upcoming:</strong> Business Model Canvas Masterclass
+                    (May 5) + Founder's Talk: Zero to One (May 15). Don't miss them!</p>
+                <p style="margin-bottom:1rem;">💡 <strong>New startups on showcase:</strong> Check out GreenEdge and
+                    NextGen ERP on our Startups page — two brilliant ideas from our own students.</p>
+                <p style="margin-bottom:1rem;">Until next time, keep building! 🚀</p>
+                <p style="color:var(--gray-600);font-size:0.8rem;">— E-Cell IIMTU Team</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="nlModal2">
+        <div class="modal" style="max-width:660px;">
+            <div class="modal-header">
+                <h3>📧 E-Cell IIMTU Newsletter — March 2026</h3><button class="modal-close"
+                    data-dismiss="modal">✕</button>
+            </div>
+            <div
+                style="color:var(--gray-400);font-size:0.9rem;line-height:1.8;max-height:60vh;overflow-y:auto;padding-right:0.5rem;">
+                <p style="margin-bottom:1rem;color:var(--white);font-weight:600;">Hello Innovator! 🛠️</p>
+                <p style="margin-bottom:1rem;">March was massive for E-Cell. Our Design Thinking Workshop saw 80
+                    students prototype solutions for real community problems in just 6 hours. The energy was incredible.
+                </p>
+                <p style="margin-bottom:1rem;">We hosted 3 startup pitch sessions — EduLeap, FarmWallet and HealthCircle
+                    all presented to a panel of faculty mentors and made incredible progress.</p>
+                <p style="margin-bottom:1rem;">Coming next: InnoHack 2.0 announcement in our April newsletter. Get
+                    ready! 🏆</p>
+                <p style="color:var(--gray-600);font-size:0.8rem;">— E-Cell IIMTU Team</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="nlModal1">
+        <div class="modal" style="max-width:660px;">
+            <div class="modal-header">
+                <h3>📧 E-Cell IIMTU Newsletter — January 2026</h3><button class="modal-close"
+                    data-dismiss="modal">✕</button>
+            </div>
+            <div
+                style="color:var(--gray-400);font-size:0.9rem;line-height:1.8;max-height:60vh;overflow-y:auto;padding-right:0.5rem;">
+                <p style="margin-bottom:1rem;color:var(--white);font-weight:600;">Welcome to E-Cell IIMTU! 🎉</p>
+                <p style="margin-bottom:1rem;">InnoHack 1.0 is done, and what a journey it was. 120 students, 30 teams,
+                    24 hours, and 3 startups were born. EduLeap took home the grand prize of ₹25,000!</p>
+                <p style="margin-bottom:1rem;">This newsletter marks the beginning of our regular communication with
+                    you. Expect event announcements, startup spotlights, and entrepreneurship tips every month.</p>
+                <p style="color:var(--gray-600);font-size:0.8rem;">— E-Cell IIMTU Team</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <span>© 2026 E-Cell IIMT University</span>
+            </div>
+        </div>
+    </footer>
+    <div class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>

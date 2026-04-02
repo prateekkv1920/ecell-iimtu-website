@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Manager — E-Cell Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        .nl-compose {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .nl-toolbar {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nl-tool-btn {
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+            background: var(--surface-hover);
+            color: var(--gray-200);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .nl-tool-btn:hover {
+            background: var(--steel);
+            color: #fff;
+            border-color: var(--steel);
+        }
+
+        .nl-editor {
+            padding: 1rem;
+            min-height: 200px;
+            outline: none;
+            font-size: 0.9rem;
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        .nl-editor:empty::before {
+            content: 'Write your newsletter content here...';
+            color: var(--gray-400);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-logo"><a href="../index.html" class="navbar-logo"
+                    style="display:inline-flex;"><span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="line-height:1;font-size:1rem;">E-Cell Admin</div>
+                        <div style="font-size:0.6rem;color:var(--steel-light);letter-spacing:0.1em;">IIMTU</div>
+                    </div>
+                </a></div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Main</div>
+                <a href="dashboard.html" class="admin-nav-item"><span class="admin-nav-icon">📊</span>Dashboard</a>
+                <div class="admin-nav-section">Content</div>
+                <a href="events.html" class="admin-nav-item"><span class="admin-nav-icon">🗓️</span>Event Manager</a>
+                <a href="blog.html" class="admin-nav-item"><span class="admin-nav-icon">📝</span>Blog Editor</a>
+                <a href="team.html" class="admin-nav-item"><span class="admin-nav-icon">👥</span>Team Manager</a>
+                <a href="startups.html" class="admin-nav-item"><span class="admin-nav-icon">🚀</span>Startup
+                    Approvals</a>
+                <div class="admin-nav-section">Communications</div>
+                <a href="newsletter.html" class="admin-nav-item active"><span
+                        class="admin-nav-icon">📧</span>Newsletter</a>
+                <a href="bookings.html" class="admin-nav-item"><span class="admin-nav-icon">📅</span>Mentor Bookings</a>
+                <a href="registrations.html" class="admin-nav-item"><span
+                        class="admin-nav-icon">🎟️</span>Registrations</a>
+                <div class="admin-nav-section">Settings</div>
+                <a href="../index.html" class="admin-nav-item"><span class="admin-nav-icon">🌐</span>View Live Site</a>
+                <a href="login.html" class="admin-nav-item" id="logoutBtn"><span
+                        class="admin-nav-icon">🚪</span>Logout</a>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <button id="adminMenuToggle"
+                        style="background:none;border:none;font-size:1.25rem;color:var(--gray-400);cursor:pointer;">☰</button>
+                    <div>
+                        <div style="font-weight:600;font-size:0.9rem;">Newsletter Manager</div>
+                        <div style="font-size:0.75rem;color:var(--gray-400);">Send newsletters and manage subscribers
+                        </div>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+            <div class="admin-content">
+                <div class="admin-page-title" style="margin-bottom:2rem;">Newsletter 📧</div>
+
+                <!-- Stats row -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon orange">📧</div>
+                        <div>
+                            <div class="admin-stat-num">312</div>
+                            <div class="admin-stat-label">Total Subscribers</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon green">✅</div>
+                        <div>
+                            <div class="admin-stat-num">3</div>
+                            <div class="admin-stat-label">Newsletters Sent</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon steel">📈</div>
+                        <div>
+                            <div class="admin-stat-num">68%</div>
+                            <div class="admin-stat-label">Avg Open Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="align-items:start;">
+                    <!-- Compose -->
+                    <div>
+                        <h3 style="font-size:1rem;margin-bottom:1rem;">✍️ Compose Newsletter</h3>
+                        <div
+                            style="background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:1.5rem;">
+                            <div class="form-group"><label class="form-label">Subject Line *</label><input type="text"
+                                    id="nlSubject" class="form-control"
+                                    placeholder="E-Cell IIMTU — April Newsletter ⚡" /></div>
+                            <div class="form-group">
+                                <label class="form-label">Recipients</label>
+                                <select class="form-control" id="nlRecipients">
+                                    <option value="all">All subscribers (312)</option>
+                                    <option value="recent">Recent subscribers (last 30 days)</option>
+                                    <option value="active">Active members only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Newsletter Body *</label>
+                                <div class="nl-compose" id="nlCompose">
+                                    <div class="nl-toolbar">
+                                        <button class="nl-tool-btn"
+                                            onclick="execCmd('bold')"><strong>B</strong></button>
+                                        <button class="nl-tool-btn" onclick="execCmd('italic')"><em>I</em></button>
+                                        <button class="nl-tool-btn" onclick="execCmd('underline')"><u>U</u></button>
+                                        <button class="nl-tool-btn" onclick="execCmd('insertUnorderedList')">•
+                                            List</button>
+                                        <button class="nl-tool-btn" onclick="insertHeading()">H2</button>
+                                        <button class="nl-tool-btn" onclick="insertLink()">🔗 Link</button>
+                                        <button class="nl-tool-btn" onclick="insertTemplate()">📄 Template</button>
+                                    </div>
+                                    <div class="nl-editor" id="nlEditor" contenteditable="true"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                                <button class="btn btn-secondary" onclick="previewNewsletter()">👁 Preview</button>
+                                <button class="btn btn-primary" onclick="sendNewsletter()">Send Now 📧</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subscribers List -->
+                    <div>
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                            <h3 style="font-size:1rem;">👥 Subscribers (312)</h3>
+                            <button class="btn btn-secondary btn-sm" onclick="exportCSV()">⬇️ Export CSV</button>
+                        </div>
+                        <div style="margin-bottom:0.75rem;"><input type="text" id="subSearch" class="form-control"
+                                placeholder="Search subscribers..." oninput="filterSubs(this.value)" /></div>
+                        <div class="admin-table-wrap" style="max-height:380px;overflow-y:auto;">
+                            <table class="admin-table" id="subTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Subscribed</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subTableBody">
+                                    <tr>
+                                        <td>Rohan Sharma</td>
+                                        <td>rohan@mail.com</td>
+                                        <td>Apr 1</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Priya Singh</td>
+                                        <td>priya@mail.com</td>
+                                        <td>Mar 28</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aryan Gupta</td>
+                                        <td>aryan@mail.com</td>
+                                        <td>Mar 25</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sneha Rao</td>
+                                        <td>sneha@mail.com</td>
+                                        <td>Mar 20</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vaibhav M.</td>
+                                        <td>vaibhav@mail.com</td>
+                                        <td>Mar 15</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ananya J.</td>
+                                        <td>ananya@mail.com</td>
+                                        <td>Mar 10</td>
+                                        <td><button class="table-action-btn danger"
+                                                onclick="removeSub(this)">Remove</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Sent Log -->
+                        <h3 style="font-size:1rem;margin:1.5rem 0 0.75rem;">📋 Sent Newsletters</h3>
+                        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                            <div
+                                style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.875rem;display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;">InnoHack 2.0 is Here! ⚡</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Apr 1, 2026 • 312 recipients
+                                    </div>
+                                </div>
+                                <span class="badge badge-green">Sent</span>
+                            </div>
+                            <div
+                                style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.875rem;display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;">March Roundup 🛠️</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Mar 15, 2026 • 287 recipients
+                                    </div>
+                                </div>
+                                <span class="badge badge-green">Sent</span>
+                            </div>
+                            <div
+                                style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.875rem;display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;">Welcome to E-Cell IIMTU! 🎉</div>
+                                    <div style="font-size:0.75rem;color:var(--gray-400);">Jan 20, 2026 • 180 recipients
+                                    </div>
+                                </div>
+                                <span class="badge badge-green">Sent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="nlPreviewModal">
+        <div class="modal" style="max-width:660px;">
+            <div class="modal-header">
+                <h3>👁 Newsletter Preview</h3><button class="modal-close" data-dismiss="modal">✕</button>
+            </div>
+            <div
+                style="background:white;border-radius:var(--radius-md);padding:2rem;color:#0d1b2a;max-height:60vh;overflow-y:auto;">
+                <div
+                    style="border-bottom:3px solid #FF6B35;padding-bottom:1rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
+                    <span style="font-size:1.5rem;">⚡</span>
+                    <div>
+                        <div style="font-weight:800;font-size:1.1rem;color:#0D1B2A;">E-Cell IIMTU</div>
+                        <div style="font-size:0.7rem;color:#4A7B9D;letter-spacing:0.1em;">IIMT UNIVERSITY NEWSLETTER
+                        </div>
+                    </div>
+                </div>
+                <div id="nlPreviewSubject" style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;"></div>
+                <div id="nlPreviewBody" style="font-size:0.9rem;line-height:1.7;color:#334155;"></div>
+                <div
+                    style="margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:0.75rem;color:#94a3b8;text-align:center;">
+                    E-Cell IIMTU · ecell@iimtindia.net · +91 63958 49822<br>
+                    <a href="#" style="color:#4A7B9D;">Unsubscribe</a>
+                </div>
+            </div>
+            <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                <button class="btn btn-primary" onclick="sendNewsletter();closeModal('nlPreviewModal')">Send Now
+                    📧</button>
+                <button class="btn btn-secondary" data-dismiss="modal">Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+    <script src="../app.js"></script>
+    <script>
+        const auth = JSON.parse(localStorage.getItem('ecell-admin-auth') || 'null');
+        if (!auth) window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); localStorage.removeItem('ecell-admin-auth'); window.location.href = 'login.html'; });
+        document.getElementById('adminMenuToggle').addEventListener('click', () => document.getElementById('adminSidebar').classList.toggle('open'));
+        function execCmd(cmd) { document.getElementById('nlEditor').focus(); document.execCommand(cmd, false, null); }
+        function insertHeading() { execCmd('formatBlock'); document.execCommand('formatBlock', false, 'h3'); }
+        function insertLink() { const url = prompt('Enter URL:'); if (url) document.execCommand('createLink', false, url); }
+        function insertTemplate() {
+            document.getElementById('nlEditor').innerHTML = `<h3>Hello Entrepreneur! ⚡</h3><p>Here's what's happening at E-Cell IIMTU this month:</p><p><strong>🗓️ Upcoming Events:</strong> [Add events here]</p><p><strong>💡 Startup Spotlight:</strong> [Feature a startup]</p><p><strong>🏆 Achievements:</strong> [Share wins]</p><p>Keep building! 🚀</p>`;
+        }
+        function previewNewsletter() {
+            document.getElementById('nlPreviewSubject').textContent = document.getElementById('nlSubject').value || 'Newsletter Subject';
+            document.getElementById('nlPreviewBody').innerHTML = document.getElementById('nlEditor').innerHTML || 'Newsletter body...';
+            openModal('nlPreviewModal');
+        }
+        async function sendNewsletter() {
+            const subject = document.getElementById('nlSubject').value;
+            if (!subject) { showToast('Please enter a subject line', 'error'); return; }
+            const btn = event.target;
+            const original = btn?.textContent;
+            if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+            await new Promise(r => setTimeout(r, 2000));
+            showToast(`Newsletter "${subject}" sent to ${document.getElementById('nlRecipients').selectedOptions[0].text}! 📧`, 'success');
+            if (btn) { btn.disabled = false; btn.textContent = original; }
+        }
+        function filterSubs(q) {
+            document.querySelectorAll('#subTableBody tr').forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+            });
+        }
+        function removeSub(btn) {
+            if (confirm('Remove this subscriber?')) { btn.closest('tr').remove(); showToast('Subscriber removed', 'info'); }
+        }
+        function exportCSV() {
+            const rows = [['Name', 'Email', 'Subscribed']];
+            document.querySelectorAll('#subTableBody tr').forEach(r => {
+                const cells = r.querySelectorAll('td');
+                rows.push([cells[0]?.textContent, cells[1]?.textContent, cells[2]?.textContent]);
+            });
+            const csv = rows.map(r => r.join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'subscribers.csv'; a.click();
+            showToast('CSV exported!', 'success');
+        }
+    </script>
+</body>
+
+</html>
